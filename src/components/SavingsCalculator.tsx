@@ -145,105 +145,107 @@ export default function SavingsCalculator() {
             Przykładowe dane — zacznij wypełniać, aby zobaczyć swoje oszczędności
           </div>
         )}
-
-        {/* BDO card moved here - under header */}
-        {manualReport && (
-          <div className="mt-6 max-w-2xl mx-auto rounded-xl border-2 border-zeme-yellow bg-zeme-yellow/10 p-5 text-left">
-            <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
-              Dodatkowe oszczędności z automatyzacji BDO
-            </h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Automatyczne sprawozdanie roczne oszczędza dodatkowy czas i pieniądze.
-            </p>
-            <div className="flex gap-6">
-              <div>
-                <p className="text-xs text-muted-foreground">Czas / mc</p>
-                <p className="text-lg font-bold">{calc.bdoOnlyTimeSaved} h</p>
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground">Oszczędność / mc</p>
-                <p className="text-lg font-bold">{calc.bdoOnlyMonthlySavings} zł</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="grid lg:grid-cols-5 gap-8">
-        {/* Sliders Panel */}
-        <div className="lg:col-span-2 bg-card rounded-xl border border-border p-6 space-y-8 h-fit">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <FileText className="w-5 h-5 text-primary" />
-            Twoje parametry
-          </h2>
+        {/* Left column: Sliders + BDO */}
+        <div className="lg:col-span-2 space-y-4">
+          <div className="bg-card rounded-xl border border-border p-6 space-y-8">
+            <h2 className="text-lg font-semibold flex items-center gap-2">
+              <FileText className="w-5 h-5 text-primary" />
+              Twoje parametry
+            </h2>
 
-          {/* Documents slider */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-baseline">
-              <label className="text-sm font-medium">Dokumenty miesięcznie</label>
-              <span className="text-lg font-bold text-primary">{docs}</span>
+            {/* Documents slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-baseline">
+                <label className="text-sm font-medium">Dokumenty miesięcznie</label>
+                <span className="text-lg font-bold text-primary">{docs}</span>
+              </div>
+              <Slider
+                value={[docs]}
+                min={50}
+                max={5000}
+                step={10}
+                onValueChange={(v) => { setDocs(v[0]); handleInteraction(); }}
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>50</span><span>5 000</span>
+              </div>
             </div>
-            <Slider
-              value={[docs]}
-              min={50}
-              max={5000}
-              step={10}
-              onValueChange={(v) => { setDocs(v[0]); handleInteraction(); }}
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>50</span><span>5 000</span>
+
+            {/* Reports slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-baseline">
+                <label className="text-sm font-medium">Raporty miesięcznie</label>
+                <span className="text-lg font-bold text-primary">{reports}</span>
+              </div>
+              <Slider
+                value={[reports]}
+                min={1}
+                max={50}
+                step={1}
+                onValueChange={(v) => { setReports(v[0]); handleInteraction(); }}
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>1</span><span>50</span>
+              </div>
+            </div>
+
+            {/* Hourly rate slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-baseline">
+                <label className="text-sm font-medium">Koszt godziny pracy</label>
+                <span className="text-lg font-bold text-primary">{rate} zł</span>
+              </div>
+              <Slider
+                value={[rate]}
+                min={50}
+                max={500}
+                step={10}
+                onValueChange={(v) => { setRate(v[0]); handleInteraction(); }}
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>50 zł</span><span>500 zł</span>
+              </div>
+            </div>
+
+            {/* Checkbox */}
+            <div className="flex items-start gap-3 pt-2">
+              <Checkbox
+                id="manual-report"
+                checked={manualReport}
+                onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
+                className="mt-0.5"
+              />
+              <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
+                Sprawozdanie roczne przygotowuję manualnie
+              </label>
             </div>
           </div>
 
-          {/* Reports slider */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-baseline">
-              <label className="text-sm font-medium">Raporty miesięcznie</label>
-              <span className="text-lg font-bold text-primary">{reports}</span>
+          {/* BDO card - under sliders panel */}
+          {manualReport && (
+            <div className="rounded-xl border-2 border-zeme-yellow bg-zeme-yellow/10 p-5">
+              <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
+                Dodatkowe oszczędności z automatyzacji BDO
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Automatyczne sprawozdanie roczne oszczędza dodatkowy czas i pieniądze.
+              </p>
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-xs text-muted-foreground">Czas / mc</p>
+                  <p className="text-lg font-bold">{calc.bdoOnlyTimeSaved} h</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Oszczędność / mc</p>
+                  <p className="text-lg font-bold">{calc.bdoOnlyMonthlySavings} zł</p>
+                </div>
+              </div>
             </div>
-            <Slider
-              value={[reports]}
-              min={1}
-              max={50}
-              step={1}
-              onValueChange={(v) => { setReports(v[0]); handleInteraction(); }}
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>1</span><span>50</span>
-            </div>
-          </div>
-
-          {/* Hourly rate slider */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-baseline">
-              <label className="text-sm font-medium">Koszt godziny pracy</label>
-              <span className="text-lg font-bold text-primary">{rate} zł</span>
-            </div>
-            <Slider
-              value={[rate]}
-              min={50}
-              max={500}
-              step={10}
-              onValueChange={(v) => { setRate(v[0]); handleInteraction(); }}
-            />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>50 zł</span><span>500 zł</span>
-            </div>
-          </div>
-
-          {/* Checkbox */}
-          <div className="flex items-start gap-3 pt-2">
-            <Checkbox
-              id="manual-report"
-              checked={manualReport}
-              onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
-              className="mt-0.5"
-            />
-            <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
-              Sprawozdanie roczne przygotowuję manualnie
-            </label>
-          </div>
+          )}
         </div>
 
         {/* Results Panel */}
