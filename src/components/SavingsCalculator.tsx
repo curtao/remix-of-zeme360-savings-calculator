@@ -332,28 +332,6 @@ export default function SavingsCalculator() {
             </div>
           </div>
 
-          {/* BDO-only card */}
-          {manualReport && (
-            <div className="rounded-xl border-2 border-zeme-yellow bg-zeme-yellow/10 p-5">
-              <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
-                Dodatkowe oszczędności z automatyzacji BDO
-              </h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                Automatyczne sprawozdanie roczne oszczędza dodatkowy czas i pieniądze.
-              </p>
-              <div className="flex gap-6">
-                <div>
-                  <p className="text-xs text-muted-foreground">Czas / mc</p>
-                  <p className="text-lg font-bold">{calc.bdoOnlyTimeSaved} h</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Oszczędność / mc</p>
-                  <p className="text-lg font-bold">{calc.bdoOnlyMonthlySavings} zł</p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
