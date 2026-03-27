@@ -339,6 +339,12 @@ export default function SavingsCalculator() {
                 percent={93}
               />
               <BreakdownRow
+                label="Wnioski DPR"
+                before={`${dpr * 30} min`}
+                after={`${dpr * 5} min`}
+                percent={83}
+              />
+              <BreakdownRow
                 label="Tworzenie raportów"
                 before={`${reports * 2} h`}
                 after={`${Math.round(reports * 10 / 60 * 10) / 10} h`}
