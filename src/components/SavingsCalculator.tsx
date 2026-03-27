@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays } from "lucide-react";
 
 const EXAMPLE_DOCS = 500;
+const EXAMPLE_DPR = 5;
 const EXAMPLE_REPORTS = 10;
 const EXAMPLE_RATE = 150;
 const EXAMPLE_MANUAL_REPORT = true;
