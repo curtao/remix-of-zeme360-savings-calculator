@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays } from "lucide-react";
 
 const EXAMPLE_DOCS = 500;
+const EXAMPLE_DPR = 5;
 const EXAMPLE_REPORTS = 10;
 const EXAMPLE_RATE = 150;
 const EXAMPLE_MANUAL_REPORT = true;
@@ -11,12 +12,17 @@ const EXAMPLE_MANUAL_REPORT = true;
 // Monthly subscription cost for ROI
 const MONTHLY_COST = 500;
 
-function useCalculations(docs: number, reports: number, rate: number, manualReport: boolean) {
+function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
   return useMemo(() => {
     // Document processing: 3 min manual → 0.2 min automated (per doc)
     const docTimeManual = docs * 3; // minutes
     const docTimeAuto = docs * 0.2;
     const docTimeSaved = docTimeManual - docTimeAuto; // minutes
+
+    // DPR applications: 30 min manual → 5 min automated (per application)
+    const dprTimeManual = dpr * 30; // minutes
+    const dprTimeAuto = dpr * 5;
+    const dprTimeSaved = dprTimeManual - dprTimeAuto;
 
     // Report creation: 2h manual → 10 min automated (per report)
     const reportTimeManual = reports * 120; // minutes
@@ -27,11 +33,10 @@ function useCalculations(docs: number, reports: number, rate: number, manualRepo
     const validationTimeSaved = reports * 5; // minutes
 
     // Annual report: spread over 12 months
-    // Categorizing 100 docs: 3h → 15min, preparing report: 2h → 1min, checking: 1h → 0
     const annualReportTimeSavedTotal = manualReport ? (180 + 120 + 60) - (15 + 1 + 0) : 0; // minutes
     const annualReportMonthlySaved = annualReportTimeSavedTotal / 12; // minutes/month
 
-    const totalTimeSavedMin = docTimeSaved + reportTimeSaved + validationTimeSaved + annualReportMonthlySaved;
+    const totalTimeSavedMin = docTimeSaved + dprTimeSaved + reportTimeSaved + validationTimeSaved + annualReportMonthlySaved;
     const totalTimeSavedHours = totalTimeSavedMin / 60;
     const totalTimeSavedDays = totalTimeSavedHours / 8;
 
@@ -39,7 +44,7 @@ function useCalculations(docs: number, reports: number, rate: number, manualRepo
     const annualSavings = monthlySavings * 12;
 
     // Efficiency %
-    const totalManualMin = docTimeManual + reportTimeManual + (reports * 5) + (manualReport ? 360 / 12 : 0);
+    const totalManualMin = docTimeManual + dprTimeManual + reportTimeManual + (reports * 5) + (manualReport ? 360 / 12 : 0);
     const efficiencyPercent = totalManualMin > 0 ? Math.round((totalTimeSavedMin / totalManualMin) * 100) : 0;
 
     // ROI months
@@ -58,8 +63,11 @@ function useCalculations(docs: number, reports: number, rate: number, manualRepo
       roiMonths,
       bdoOnlyTimeSaved: Math.round((bdoOnlyTimeSaved / 60) * 10) / 10,
       bdoOnlyMonthlySavings: Math.round(bdoOnlyMonthlySavings),
+      dprTimeSaved,
+      dprTimeManual,
+      dprTimeAuto,
     };
-  }, [docs, reports, rate, manualReport]);
+  }, [docs, dpr, reports, rate, manualReport]);
 }
 
 function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
@@ -118,11 +126,12 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
 export default function SavingsCalculator() {
   const [isExample, setIsExample] = useState(true);
   const [docs, setDocs] = useState(EXAMPLE_DOCS);
+  const [dpr, setDpr] = useState(EXAMPLE_DPR);
   const [reports, setReports] = useState(EXAMPLE_REPORTS);
   const [rate, setRate] = useState(EXAMPLE_RATE);
   const [manualReport, setManualReport] = useState(EXAMPLE_MANUAL_REPORT);
 
-  const calc = useCalculations(docs, reports, rate, manualReport);
+  const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
   const handleInteraction = () => {
     if (isExample) setIsExample(false);
@@ -159,7 +168,7 @@ export default function SavingsCalculator() {
             {/* Documents slider */}
             <div className="space-y-3">
               <div className="flex justify-between items-baseline">
-                <label className="text-sm font-medium">Dokumenty miesięcznie</label>
+                <label className="text-sm font-medium">KPO miesięcznie</label>
                 <span className="text-lg font-bold text-primary">{docs}</span>
               </div>
               <Slider
@@ -171,6 +180,24 @@ export default function SavingsCalculator() {
               />
               <div className="flex justify-between text-xs text-muted-foreground">
                 <span>50</span><span>5 000</span>
+              </div>
+            </div>
+
+            {/* DPR slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between items-baseline">
+                <label className="text-sm font-medium">Wnioski DPR miesięcznie</label>
+                <span className="text-lg font-bold text-primary">{dpr}</span>
+              </div>
+              <Slider
+                value={[dpr]}
+                min={1}
+                max={50}
+                step={1}
+                onValueChange={(v) => { setDpr(v[0]); handleInteraction(); }}
+              />
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>1</span><span>50</span>
               </div>
             </div>
 
@@ -310,6 +337,12 @@ export default function SavingsCalculator() {
                 before={`${docs * 3} min`}
                 after={`${(docs * 0.2).toFixed(0)} min`}
                 percent={93}
+              />
+              <BreakdownRow
+                label="Wnioski DPR"
+                before={`${dpr * 30} min`}
+                after={`${dpr * 5} min`}
+                percent={83}
               />
               <BreakdownRow
                 label="Tworzenie raportów"
