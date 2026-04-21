@@ -487,15 +487,7 @@ function BreakdownRow({
           </span>
         </span>
       </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-        <div
-          className="h-full gradient-primary rounded-full"
-          style={{
-            width: `${clampedPercent}%`,
-            transition: "width 700ms cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
-        />
-      </div>
+      <div className="h-px w-full bg-border" />
     </div>
   );
 }
