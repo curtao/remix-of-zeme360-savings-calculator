@@ -87,28 +87,54 @@ function useCalculations(docs: number, dpr: number, reports: number, rate: numbe
   }, [docs, dpr, reports, rate, manualReport]);
 }
 
-function AnimatedNumber({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) {
+function AnimatedNumber({
+  value,
+  suffix = "",
+  prefix = "",
+  decimals = 0,
+  duration = 600,
+}: {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  duration?: number;
+}) {
   const [display, setDisplay] = useState(value);
   const prevRef = useRef(value);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const start = prevRef.current;
     const end = value;
-    const duration = 400;
-    const startTime = Date.now();
+    if (start === end) return;
+    const startTime = performance.now();
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round((start + (end - start) * eased) * 10) / 10);
-      if (progress < 1) requestAnimationFrame(animate);
+    const animate = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      // easeOutQuart for snappier, smoother feel
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setDisplay(start + (end - start) * eased);
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(animate);
+      } else {
+        prevRef.current = end;
+      }
     };
-    requestAnimationFrame(animate);
-    prevRef.current = value;
-  }, [value]);
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      prevRef.current = display;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, duration]);
 
-  return <span>{prefix}{display.toLocaleString("pl-PL")}{suffix}</span>;
+  const formatted = display.toLocaleString("pl-PL", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+
+  return <span className="tabular-nums">{prefix}{formatted}{suffix}</span>;
 }
 
 interface MetricCardProps {
