@@ -423,16 +423,6 @@ export default function SavingsCalculator() {
                 decimals={1}
                 percent={Math.round((1 - AUTO_REPORT_MIN / MANUAL_REPORT_MIN) * 100)}
               />
-              {manualReport && (
-                <BreakdownRow
-                  label="Sprawozdanie roczne (mc)"
-                  beforeValue={MANUAL_BDO_REPORT_MIN / 12}
-                  afterValue={AUTO_BDO_REPORT_MIN / 12}
-                  unit="min"
-                  decimals={1}
-                  percent={Math.round((1 - AUTO_BDO_REPORT_MIN / MANUAL_BDO_REPORT_MIN) * 100)}
-                />
-              )}
             </div>
           </div>
 
