@@ -388,7 +388,7 @@ export default function SavingsCalculator() {
           <div className="bg-card rounded-xl border border-border p-5">
             <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary" />
-              Szczegółowy podział oszczędności
+              Szczegółowy podział oszczędzonego czasu
             </h3>
             <div className="space-y-3">
               <BreakdownRow
