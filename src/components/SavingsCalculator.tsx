@@ -406,6 +406,7 @@ export default function SavingsCalculator() {
                 unit="min"
                 decimals={0}
                 percent={MANUAL_KEO_MIN > 0 ? Math.round((1 - AUTO_KEO_MIN / MANUAL_KEO_MIN) * 100) : 100}
+                afterLabel="automatycznie"
               />
               <BreakdownRow
                 label="Wnioski DPR"
