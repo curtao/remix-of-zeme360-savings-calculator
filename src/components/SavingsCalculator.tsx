@@ -487,7 +487,7 @@ function BreakdownRow({
           </span>
         </span>
       </div>
-      <div className="h-px w-full bg-border" />
+      <div className="h-px w-full gradient-primary opacity-80" />
     </div>
   );
 }
