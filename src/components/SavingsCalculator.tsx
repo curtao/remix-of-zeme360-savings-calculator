@@ -12,19 +12,19 @@ const EXAMPLE_MANUAL_REPORT = true;
 
 const MONTHLY_COST = 500;
 
-// Automated times (from PDF measurements, in minutes)
-const AUTO_KPO_MIN = 24.2 / 60;       // ~0.4 min
-const AUTO_KEO_MIN = 24.2 / 60;       // ~0.4 min (same as KPO duplication)
-const AUTO_DPR_MIN = 30 / 60;         // 0.5 min
-const AUTO_REPORT_MIN = 30.25 / 60;   // ~0.5 min
-const AUTO_BDO_REPORT_MIN = 35.22 / 60; // ~0.6 min (annual)
+// Automated times in Z360 (in minutes)
+const AUTO_KPO_MIN = 23 / 60;         // 23s — powielanie KPO
+const AUTO_KEO_MIN = 0;               // KEO w pełni automatyczne
+const AUTO_DPR_MIN = 15 / 60;         // 15s
+const AUTO_REPORT_MIN = 22 / 60;      // 22s — raport per MPD
+const AUTO_BDO_REPORT_MIN = 17 / 60;  // 17s — sprawozdanie roczne
 
-// Manual times (in minutes)
-const MANUAL_KPO_MIN = 3;
-const MANUAL_KEO_MIN = 4;
-const MANUAL_DPR_MIN = 30;
-const MANUAL_REPORT_MIN = 120;
-const MANUAL_BDO_REPORT_MIN = 360; // total per year
+// Manual times in BDO (in minutes) — średnie wartości z zakresów
+const MANUAL_KPO_MIN = 7.5;           // 5-10 min
+const MANUAL_KEO_MIN = 2;             // 1-3 min
+const MANUAL_DPR_MIN = 60;            // 5 min – kilka godzin (śr. ~1h)
+const MANUAL_REPORT_MIN = 90;         // kilkanaście min – kilka godzin (śr. 1.5h)
+const MANUAL_BDO_REPORT_MIN = 720;    // kilka godzin – 1-2 dni robocze (śr. 1.5 dnia × 8h)
 
 function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
   return useMemo(() => {
