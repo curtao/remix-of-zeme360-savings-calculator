@@ -393,33 +393,43 @@ export default function SavingsCalculator() {
             <div className="space-y-3">
               <BreakdownRow
                 label="Przetwarzanie KPO"
-                before={`${Math.round(calc.docTimeManual)} min`}
-                after={`${Math.round(calc.docTimeAuto)} min`}
+                beforeValue={calc.docTimeManual}
+                afterValue={calc.docTimeAuto}
+                unit="min"
+                decimals={1}
                 percent={Math.round((1 - AUTO_KPO_MIN / MANUAL_KPO_MIN) * 100)}
               />
               <BreakdownRow
                 label={`KEO (${calc.keo.toLocaleString("pl-PL")} szt.)`}
-                before={`${Math.round(calc.keoTimeManual)} min`}
-                after={`${Math.round(calc.keoTimeAuto)} min`}
-                percent={Math.round((1 - AUTO_KEO_MIN / MANUAL_KEO_MIN) * 100)}
+                beforeValue={calc.keoTimeManual}
+                afterValue={calc.keoTimeAuto}
+                unit="min"
+                decimals={0}
+                percent={MANUAL_KEO_MIN > 0 ? Math.round((1 - AUTO_KEO_MIN / MANUAL_KEO_MIN) * 100) : 100}
               />
               <BreakdownRow
                 label="Wnioski DPR"
-                before={`${Math.round(calc.dprTimeManual)} min`}
-                after={`${Math.round(calc.dprTimeAuto)} min`}
+                beforeValue={calc.dprTimeManual}
+                afterValue={calc.dprTimeAuto}
+                unit="min"
+                decimals={1}
                 percent={Math.round((1 - AUTO_DPR_MIN / MANUAL_DPR_MIN) * 100)}
               />
               <BreakdownRow
                 label="Tworzenie raportów"
-                before={`${Math.round(calc.reportTimeManual / 60 * 10) / 10} h`}
-                after={`${Math.round(calc.reportTimeAuto / 60 * 10) / 10} h`}
+                beforeValue={calc.reportTimeManual / 60}
+                afterValue={calc.reportTimeAuto / 60}
+                unit="h"
+                decimals={1}
                 percent={Math.round((1 - AUTO_REPORT_MIN / MANUAL_REPORT_MIN) * 100)}
               />
               {manualReport && (
                 <BreakdownRow
                   label="Sprawozdanie roczne (mc)"
-                  before={`${Math.round(MANUAL_BDO_REPORT_MIN / 12)} min`}
-                  after={`${Math.round(AUTO_BDO_REPORT_MIN / 12 * 10) / 10} min`}
+                  beforeValue={MANUAL_BDO_REPORT_MIN / 12}
+                  afterValue={AUTO_BDO_REPORT_MIN / 12}
+                  unit="min"
+                  decimals={1}
                   percent={Math.round((1 - AUTO_BDO_REPORT_MIN / MANUAL_BDO_REPORT_MIN) * 100)}
                 />
               )}
@@ -432,21 +442,46 @@ export default function SavingsCalculator() {
   );
 }
 
-function BreakdownRow({ label, before, after, percent }: { label: string; before: string; after: string; percent: number }) {
+function BreakdownRow({
+  label,
+  beforeValue,
+  afterValue,
+  unit,
+  percent,
+  decimals = 0,
+}: {
+  label: string;
+  beforeValue: number;
+  afterValue: number;
+  unit: string;
+  percent: number;
+  decimals?: number;
+}) {
+  const clampedPercent = Math.max(0, Math.min(100, percent));
   return (
-    <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span>{label}</span>
-        <span className="text-muted-foreground">
-          <span className="line-through">{before}</span> → <span className="font-semibold text-primary">{after}</span>
+    <div className="space-y-1.5">
+      <div className="flex justify-between items-baseline text-sm gap-2">
+        <span className="font-medium">{label}</span>
+        <span className="text-muted-foreground tabular-nums">
+          <span className="line-through">
+            <AnimatedNumber value={beforeValue} decimals={decimals} suffix={` ${unit}`} />
+          </span>{" "}
+          →{" "}
+          <span className="font-semibold text-primary">
+            <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />
+          </span>
         </span>
       </div>
       <div className="h-2 bg-secondary rounded-full overflow-hidden">
         <div
-          className="h-full gradient-primary rounded-full transition-all duration-500"
-          style={{ width: `${percent}%` }}
+          className="h-full gradient-primary rounded-full"
+          style={{
+            width: `${clampedPercent}%`,
+            transition: "width 700ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
         />
       </div>
     </div>
   );
 }
+
