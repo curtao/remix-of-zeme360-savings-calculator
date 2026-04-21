@@ -390,52 +390,63 @@ export default function SavingsCalculator() {
               <BarChart3 className="w-4 h-4 text-primary" />
               Szczegółowy podział oszczędzonego czasu
             </h3>
-            <div className="space-y-3">
-              <BreakdownRow
-                label="Przetwarzanie KPO"
-                beforeValue={calc.docTimeManual}
-                afterValue={calc.docTimeAuto}
-                unit="min"
-                decimals={1}
-                percent={Math.round((1 - AUTO_KPO_MIN / MANUAL_KPO_MIN) * 100)}
-              />
-              <BreakdownRow
-                label={`KEO (${calc.keo.toLocaleString("pl-PL")} szt.)`}
-                beforeValue={calc.keoTimeManual}
-                afterValue={calc.keoTimeAuto}
-                unit="min"
-                decimals={0}
-                percent={MANUAL_KEO_MIN > 0 ? Math.round((1 - AUTO_KEO_MIN / MANUAL_KEO_MIN) * 100) : 100}
-                afterLabel="automatycznie"
-              />
-              <BreakdownRow
-                label="Wnioski DPR"
-                beforeValue={calc.dprTimeManual}
-                afterValue={calc.dprTimeAuto}
-                unit="min"
-                decimals={1}
-                percent={Math.round((1 - AUTO_DPR_MIN / MANUAL_DPR_MIN) * 100)}
-              />
-              <BreakdownRow
-                label="Tworzenie raportów"
-                beforeValue={calc.reportTimeManual / 60}
-                afterValue={calc.reportTimeAuto / 60}
-                unit="h"
-                decimals={1}
-                percent={Math.round((1 - AUTO_REPORT_MIN / MANUAL_REPORT_MIN) * 100)}
-              />
-              {manualReport && (
-                <BreakdownRow
-                  label="Sprawozdanie roczne (mc)"
-                  beforeValue={MANUAL_BDO_REPORT_MIN / 12}
-                  afterValue={AUTO_BDO_REPORT_MIN / 12}
-                  unit="min"
-                  decimals={1}
-                  percent={Math.round((1 - AUTO_BDO_REPORT_MIN / MANUAL_BDO_REPORT_MIN) * 100)}
-                  afterLabel="automatycznie"
-                />
-              )}
-            </div>
+            {(() => {
+              const kpoSaved = calc.docTimeManual - calc.docTimeAuto;
+              const keoSaved = calc.keoTimeManual - calc.keoTimeAuto;
+              const dprSaved = calc.dprTimeManual - calc.dprTimeAuto;
+              const reportSaved = calc.reportTimeManual - calc.reportTimeAuto;
+              const bdoSaved = manualReport ? (MANUAL_BDO_REPORT_MIN - AUTO_BDO_REPORT_MIN) / 12 : 0;
+              const maxSaved = Math.max(kpoSaved, keoSaved, dprSaved, reportSaved, bdoSaved, 1);
+              const pct = (v: number) => Math.round((v / maxSaved) * 100);
+              return (
+                <div className="space-y-3">
+                  <BreakdownRow
+                    label="Przetwarzanie KPO"
+                    beforeValue={calc.docTimeManual}
+                    afterValue={calc.docTimeAuto}
+                    unit="min"
+                    decimals={1}
+                    percent={pct(kpoSaved)}
+                  />
+                  <BreakdownRow
+                    label={`KEO (${calc.keo.toLocaleString("pl-PL")} szt.)`}
+                    beforeValue={calc.keoTimeManual}
+                    afterValue={calc.keoTimeAuto}
+                    unit="min"
+                    decimals={0}
+                    percent={pct(keoSaved)}
+                    afterLabel="automatycznie"
+                  />
+                  <BreakdownRow
+                    label="Wnioski DPR"
+                    beforeValue={calc.dprTimeManual}
+                    afterValue={calc.dprTimeAuto}
+                    unit="min"
+                    decimals={1}
+                    percent={pct(dprSaved)}
+                  />
+                  <BreakdownRow
+                    label="Tworzenie raportów"
+                    beforeValue={calc.reportTimeManual / 60}
+                    afterValue={calc.reportTimeAuto / 60}
+                    unit="h"
+                    decimals={1}
+                    percent={pct(reportSaved)}
+                  />
+                  {manualReport && (
+                    <BreakdownRow
+                      label="Sprawozdanie roczne (mc)"
+                      beforeValue={MANUAL_BDO_REPORT_MIN / 12}
+                      afterValue={AUTO_BDO_REPORT_MIN / 12}
+                      unit="min"
+                      decimals={1}
+                      percent={pct(bdoSaved)}
+                      afterLabel="automatycznie"
+                    />
+                  )}
+                </div>
+              );
+            })()}
           </div>
 
         </div>
