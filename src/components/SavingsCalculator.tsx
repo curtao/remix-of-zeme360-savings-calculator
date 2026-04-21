@@ -388,7 +388,7 @@ export default function SavingsCalculator() {
           <div className="bg-card rounded-xl border border-border p-5">
             <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary" />
-              Szczegółowy podział oszczędności
+              Szczegółowy podział oszczędzonego czasu
             </h3>
             <div className="space-y-3">
               <BreakdownRow
@@ -406,6 +406,7 @@ export default function SavingsCalculator() {
                 unit="min"
                 decimals={0}
                 percent={MANUAL_KEO_MIN > 0 ? Math.round((1 - AUTO_KEO_MIN / MANUAL_KEO_MIN) * 100) : 100}
+                afterLabel="automatycznie"
               />
               <BreakdownRow
                 label="Wnioski DPR"
@@ -439,6 +440,7 @@ function BreakdownRow({
   unit,
   percent,
   decimals = 0,
+  afterLabel,
 }: {
   label: string;
   beforeValue: number;
@@ -446,6 +448,7 @@ function BreakdownRow({
   unit: string;
   percent: number;
   decimals?: number;
+  afterLabel?: string;
 }) {
   const clampedPercent = Math.max(0, Math.min(100, percent));
   return (
@@ -458,7 +461,7 @@ function BreakdownRow({
           </span>{" "}
           →{" "}
           <span className="font-semibold text-primary">
-            <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />
+            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />}
           </span>
         </span>
       </div>
