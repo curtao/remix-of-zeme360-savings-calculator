@@ -432,6 +432,7 @@ export default function SavingsCalculator() {
                   unit="min"
                   decimals={1}
                   percent={Math.round((1 - AUTO_BDO_REPORT_MIN / MANUAL_BDO_REPORT_MIN) * 100)}
+                  afterLabel="automatycznie"
                 />
               )}
             </div>
