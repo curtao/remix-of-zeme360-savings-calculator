@@ -439,6 +439,7 @@ function BreakdownRow({
   unit,
   percent,
   decimals = 0,
+  afterLabel,
 }: {
   label: string;
   beforeValue: number;
@@ -446,6 +447,7 @@ function BreakdownRow({
   unit: string;
   percent: number;
   decimals?: number;
+  afterLabel?: string;
 }) {
   const clampedPercent = Math.max(0, Math.min(100, percent));
   return (
@@ -458,7 +460,7 @@ function BreakdownRow({
           </span>{" "}
           →{" "}
           <span className="font-semibold text-primary">
-            <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />
+            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />}
           </span>
         </span>
       </div>
