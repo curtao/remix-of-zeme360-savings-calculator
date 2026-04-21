@@ -38,8 +38,10 @@ function useCalculations(docs: number, dpr: number, reports: number, rate: numbe
     const keoTimeAuto = keo * AUTO_KEO_MIN;
     const keoTimeSaved = keoTimeManual - keoTimeAuto;
 
-    const dprTimeManual = dpr * MANUAL_DPR_MIN;
-    const dprTimeAuto = dpr * AUTO_DPR_MIN;
+    // dpr is quarterly — convert to monthly average: *4 (rok) / 12
+    const dprMonthly = (dpr * 4) / 12;
+    const dprTimeManual = dprMonthly * MANUAL_DPR_MIN;
+    const dprTimeAuto = dprMonthly * AUTO_DPR_MIN;
     const dprTimeSaved = dprTimeManual - dprTimeAuto;
 
     const reportTimeManual = reports * MANUAL_REPORT_MIN;
@@ -274,14 +276,20 @@ export default function SavingsCalculator() {
               </div>
             </div>
 
-            <SliderWithInput
-              label="Wnioski DPR miesięcznie"
-              value={dpr}
-              min={1}
-              max={50}
-              step={1}
-              onChange={wrap(setDpr)}
-            />
+            <div className="space-y-2">
+              <SliderWithInput
+                label="Wnioski DPR kwartalnie"
+                value={dpr}
+                min={1}
+                max={50}
+                step={1}
+                onChange={wrap(setDpr)}
+              />
+              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
+                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                <span>Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12).</span>
+              </div>
+            </div>
 
             <SliderWithInput
               label="Raporty miesięcznie"
