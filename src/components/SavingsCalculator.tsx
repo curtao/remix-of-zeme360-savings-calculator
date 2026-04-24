@@ -529,7 +529,8 @@ function BreakdownRow({
   label,
   beforeValue,
   afterValue,
-  unit,
+  beforeUnit,
+  afterUnit,
   percent,
   decimals = 0,
   afterLabel,
@@ -537,23 +538,23 @@ function BreakdownRow({
   label: string;
   beforeValue: number;
   afterValue: number;
-  unit: string;
+  beforeUnit: string;
+  afterUnit: string;
   percent: number;
   decimals?: number;
   afterLabel?: string;
 }) {
-  const clampedPercent = Math.max(0, Math.min(100, percent));
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-baseline text-sm gap-2">
         <span className="font-medium">{label}</span>
         <span className="text-muted-foreground tabular-nums">
           <span className="line-through">
-            <AnimatedNumber value={beforeValue} decimals={decimals} suffix={` ${unit}`} />
+            <AnimatedNumber value={beforeValue} decimals={decimals} suffix={` ${beforeUnit}`} />
           </span>{" "}
           →{" "}
           <span className="font-semibold text-primary">
-            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />}
+            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${afterUnit}`} />}
           </span>
         </span>
       </div>
