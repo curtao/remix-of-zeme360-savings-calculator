@@ -180,6 +180,12 @@ interface SliderWithInputProps {
 
 function SliderWithInput({ label, value, min, max, step, unit, onChange }: SliderWithInputProps) {
   const clamp = (n: number) => Math.min(max, Math.max(min, n));
+  const [draft, setDraft] = useState<string>(String(value));
+
+  useEffect(() => {
+    setDraft(String(value));
+  }, [value]);
+
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-center gap-3">
@@ -187,13 +193,27 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
         <div className="flex items-center gap-1">
           <Input
             type="number"
-            value={value}
+            value={draft}
             min={min}
             max={max}
             step={step}
             onChange={(e) => {
-              const n = Number(e.target.value);
-              if (!isNaN(n)) onChange(clamp(n));
+              const raw = e.target.value;
+              setDraft(raw);
+              const n = Number(raw);
+              if (raw !== "" && !isNaN(n) && n >= min && n <= max) {
+                onChange(n);
+              }
+            }}
+            onBlur={() => {
+              const n = Number(draft);
+              if (draft === "" || isNaN(n)) {
+                setDraft(String(value));
+              } else {
+                const clamped = clamp(n);
+                onChange(clamped);
+                setDraft(String(clamped));
+              }
             }}
             className="h-8 w-24 text-right text-base font-bold text-primary px-2"
           />
@@ -310,8 +330,8 @@ export default function SavingsCalculator() {
               <SliderWithInput
                 label="Koszt godziny pracy"
                 value={rate}
-                min={20}
-                max={500}
+                min={40}
+                max={200}
                 step={5}
                 unit="zł"
                 onChange={wrap(setRate)}
