@@ -69,7 +69,7 @@ function useCalculations(docs: number, dpr: number, reports: number, rate: numbe
 
     return {
       keo,
-      totalTimeSavedHours: Math.round(totalTimeSavedHours * 10) / 10,
+      totalTimeSavedHours: Math.round(totalTimeSavedHours),
       totalTimeSavedDays: Math.round(totalTimeSavedDays * 10) / 10,
       monthlySavings: Math.round(monthlySavings),
       annualSavings: Math.round(annualSavings),
@@ -372,6 +372,9 @@ export default function SavingsCalculator() {
             <p className="text-sm opacity-80 mt-2">
               rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
             </p>
+            <p className="text-xs opacity-75 mt-3">
+              * Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin.
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
@@ -471,6 +474,17 @@ export default function SavingsCalculator() {
 
         </div>
       </div>
+
+      <footer className="mt-12 pt-8 border-t border-border">
+        <div className="bg-card rounded-xl border border-border p-6 text-center">
+          <p className="text-sm font-semibold text-muted-foreground mb-3">Skontaktuj się z nami</p>
+          <p className="text-lg font-bold text-foreground">Urszula Głuch</p>
+          <p className="text-sm text-muted-foreground">Digital Expert</p>
+          <p className="text-sm font-medium text-primary mt-1">
+            <a href="tel:+48531995454" className="hover:underline">tel. 531-995-454</a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
