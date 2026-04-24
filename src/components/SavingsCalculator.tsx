@@ -7,7 +7,7 @@ import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, Ca
 const EXAMPLE_DOCS = 500;
 const EXAMPLE_DPR = 5;
 const EXAMPLE_REPORTS = 10;
-const EXAMPLE_RATE = 150;
+const EXAMPLE_RATE = 40;
 const EXAMPLE_MANUAL_REPORT = true;
 
 const MONTHLY_COST = 500;
@@ -291,24 +291,36 @@ export default function SavingsCalculator() {
               </div>
             </div>
 
-            <SliderWithInput
-              label="Raporty miesięcznie"
-              value={reports}
-              min={1}
-              max={500}
-              step={1}
-              onChange={wrap(setReports)}
-            />
+            <div className="space-y-2">
+              <SliderWithInput
+                label="Raporty miesięcznie"
+                value={reports}
+                min={1}
+                max={500}
+                step={1}
+                onChange={wrap(setReports)}
+              />
+              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
+                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                <span>Liczba raportów, które tworzysz na podstawie danych odpadowych.</span>
+              </div>
+            </div>
 
-            <SliderWithInput
-              label="Koszt godziny pracy"
-              value={rate}
-              min={50}
-              max={500}
-              step={10}
-              unit="zł"
-              onChange={wrap(setRate)}
-            />
+            <div className="space-y-2">
+              <SliderWithInput
+                label="Koszt godziny pracy"
+                value={rate}
+                min={20}
+                max={500}
+                step={5}
+                unit="zł"
+                onChange={wrap(setRate)}
+              />
+              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
+                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                <span>Koszt godziny pracy twojego pracownika.</span>
+              </div>
+            </div>
 
             <div className="flex items-start gap-3 pt-2">
               <Checkbox
