@@ -7,7 +7,7 @@ import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, Ca
 const EXAMPLE_DOCS = 500;
 const EXAMPLE_DPR = 5;
 const EXAMPLE_REPORTS = 10;
-const EXAMPLE_RATE = 150;
+const EXAMPLE_RATE = 40;
 const EXAMPLE_MANUAL_REPORT = true;
 
 const MONTHLY_COST = 500;
@@ -69,7 +69,7 @@ function useCalculations(docs: number, dpr: number, reports: number, rate: numbe
 
     return {
       keo,
-      totalTimeSavedHours: Math.round(totalTimeSavedHours * 10) / 10,
+      totalTimeSavedHours: Math.round(totalTimeSavedHours),
       totalTimeSavedDays: Math.round(totalTimeSavedDays * 10) / 10,
       monthlySavings: Math.round(monthlySavings),
       annualSavings: Math.round(annualSavings),
@@ -291,24 +291,36 @@ export default function SavingsCalculator() {
               </div>
             </div>
 
-            <SliderWithInput
-              label="Raporty miesięcznie"
-              value={reports}
-              min={1}
-              max={500}
-              step={1}
-              onChange={wrap(setReports)}
-            />
+            <div className="space-y-2">
+              <SliderWithInput
+                label="Raporty miesięcznie"
+                value={reports}
+                min={1}
+                max={500}
+                step={1}
+                onChange={wrap(setReports)}
+              />
+              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
+                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                <span>Liczba raportów, które tworzysz na podstawie danych odpadowych.</span>
+              </div>
+            </div>
 
-            <SliderWithInput
-              label="Koszt godziny pracy"
-              value={rate}
-              min={50}
-              max={500}
-              step={10}
-              unit="zł"
-              onChange={wrap(setRate)}
-            />
+            <div className="space-y-2">
+              <SliderWithInput
+                label="Koszt godziny pracy"
+                value={rate}
+                min={20}
+                max={500}
+                step={5}
+                unit="zł"
+                onChange={wrap(setRate)}
+              />
+              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
+                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                <span>Koszt godziny pracy twojego pracownika.</span>
+              </div>
+            </div>
 
             <div className="flex items-start gap-3 pt-2">
               <Checkbox
@@ -359,6 +371,9 @@ export default function SavingsCalculator() {
             </div>
             <p className="text-sm opacity-80 mt-2">
               rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
+            </p>
+            <p className="text-xs opacity-75 mt-3">
+              * Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin.
             </p>
           </div>
 
@@ -459,6 +474,17 @@ export default function SavingsCalculator() {
 
         </div>
       </div>
+
+      <footer className="mt-12 pt-8 border-t border-border">
+        <div className="bg-card rounded-xl border border-border p-6 text-center">
+          <p className="text-sm font-semibold text-muted-foreground mb-3">Skontaktuj się z nami</p>
+          <p className="text-lg font-bold text-foreground">Urszula Głuch</p>
+          <p className="text-sm text-muted-foreground">Digital Expert</p>
+          <p className="text-sm font-medium text-primary mt-1">
+            <a href="tel:+48531995454" className="hover:underline">tel. 531-995-454</a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
