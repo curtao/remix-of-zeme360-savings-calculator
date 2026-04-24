@@ -23,7 +23,7 @@ const AUTO_BDO_REPORT_MIN = 17 / 60;  // 17s — sprawozdanie roczne
 const MANUAL_KPO_MIN = 7.5;           // 5-10 min
 const MANUAL_KEO_MIN = 2;             // 1-3 min
 const MANUAL_DPR_MIN = 60;            // 5 min – kilka godzin (śr. ~1h)
-const MANUAL_REPORT_MIN = 90;         // kilkanaście min – kilka godzin (śr. 1.5h)
+const MANUAL_REPORT_MIN = 90;           // 1.5h per report
 const MANUAL_BDO_REPORT_MIN = 720;    // kilka godzin – 1-2 dni robocze (śr. 1.5 dnia × 8h)
 
 function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
