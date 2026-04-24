@@ -475,14 +475,22 @@ export default function SavingsCalculator() {
         </div>
       </div>
 
-      <footer className="mt-12 pt-8 border-t border-border">
-        <div className="bg-card rounded-xl border border-border p-6 text-center">
-          <p className="text-sm font-semibold text-muted-foreground mb-3">Skontaktuj się z nami</p>
-          <p className="text-lg font-bold text-foreground">Urszula Głuch</p>
-          <p className="text-sm text-muted-foreground">Digital Expert</p>
-          <p className="text-sm font-medium text-primary mt-1">
-            <a href="tel:+48531995454" className="hover:underline">tel. 531-995-454</a>
-          </p>
+      <footer className="mt-12">
+        <div className="rounded-xl border border-zeme-teal/30 bg-zeme-teal/10 p-6 flex items-center gap-5">
+          <div className="w-20 h-20 shrink-0 rounded-full bg-card border-2 border-zeme-teal/40 overflow-hidden flex items-center justify-center text-muted-foreground text-xs">
+            Foto
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-semibold text-muted-foreground mb-2">Skontaktuj się z nami</p>
+            <p className="text-lg font-bold text-foreground leading-tight">Urszula Głuch</p>
+            <p className="text-sm text-muted-foreground">Digital Expert</p>
+            <p className="text-sm font-medium text-primary mt-1">
+              <a href="tel:+48531995454" className="hover:underline">tel. 531-995-454</a>
+            </p>
+            <p className="text-sm font-medium text-primary">
+              <a href="mailto:urszula.gluch@zeme.com.pl" className="hover:underline">e-mail: urszula.gluch@zeme.com.pl</a>
+            </p>
+          </div>
         </div>
       </footer>
     </div>
