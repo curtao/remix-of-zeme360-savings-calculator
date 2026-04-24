@@ -310,8 +310,8 @@ export default function SavingsCalculator() {
               <SliderWithInput
                 label="Koszt godziny pracy"
                 value={rate}
-                min={20}
-                max={500}
+                min={40}
+                max={200}
                 step={5}
                 unit="zł"
                 onChange={wrap(setRate)}
