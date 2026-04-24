@@ -510,12 +510,14 @@ export default function SavingsCalculator() {
             <p className="text-sm font-semibold text-muted-foreground mb-2">Skontaktuj się z nami</p>
             <p className="text-lg font-bold text-foreground leading-tight">Urszula Głuch</p>
             <p className="text-sm text-muted-foreground">Digital Expert</p>
-            <p className="text-sm font-medium text-primary mt-1">
-              <a href="tel:+48531995454" className="hover:underline">tel. 531-995-454</a>
-            </p>
-            <p className="text-sm font-medium text-primary">
-              <a href="mailto:urszula.gluch@zeme.com.pl" className="hover:underline">e-mail: urszula.gluch@zeme.com.pl</a>
-            </p>
+            <div className="flex items-center gap-2 text-sm font-medium text-primary mt-1">
+              <Phone className="w-4 h-4" />
+              <a href="tel:+48531995454" className="hover:underline">531-995-454</a>
+            </div>
+            <div className="flex items-center gap-2 text-sm font-medium text-primary">
+              <Mail className="w-4 h-4" />
+              <a href="mailto:urszula.gluch@zeme.com.pl" className="hover:underline">urszula.gluch@zeme.com.pl</a>
+            </div>
           </div>
         </div>
       </footer>
