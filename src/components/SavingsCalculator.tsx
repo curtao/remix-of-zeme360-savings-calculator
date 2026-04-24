@@ -434,57 +434,65 @@ export default function SavingsCalculator() {
               Szczegółowy podział oszczędzonego czasu
             </h3>
             {(() => {
-              const kpoSaved = calc.docTimeManual - calc.docTimeAuto;
-              const keoSaved = calc.keoTimeManual - calc.keoTimeAuto;
-              const dprSaved = calc.dprTimeManual - calc.dprTimeAuto;
-              const reportSaved = calc.reportTimeManual - calc.reportTimeAuto;
-              const bdoSaved = manualReport ? (MANUAL_BDO_REPORT_MIN - AUTO_BDO_REPORT_MIN) / 12 : 0;
+              // Pokazujemy czasy JEDNOSTKOWE (per czynność) – zgodne z danymi z dokumentu
+              const kpoSaved = MANUAL_KPO_MIN - AUTO_KPO_MIN;
+              const keoSaved = MANUAL_KEO_MIN - AUTO_KEO_MIN;
+              const dprSaved = MANUAL_DPR_MIN - AUTO_DPR_MIN;
+              const reportSaved = MANUAL_REPORT_MIN - AUTO_REPORT_MIN;
+              const bdoSaved = manualReport ? MANUAL_BDO_REPORT_MIN - AUTO_BDO_REPORT_MIN : 0;
               const maxSaved = Math.max(kpoSaved, keoSaved, dprSaved, reportSaved, bdoSaved, 1);
               const pct = (v: number) => Math.round((v / maxSaved) * 100);
               return (
                 <div className="space-y-3">
+                  <p className="text-xs text-muted-foreground -mt-2 mb-3">
+                    Czasy jednostkowe na jedną czynność (manualnie w BDO → automatycznie w Z360).
+                  </p>
                   <BreakdownRow
-                    label="Przetwarzanie KPO"
-                    beforeValue={calc.docTimeManual}
-                    afterValue={calc.docTimeAuto}
-                    unit="min"
+                    label="1× KPO (powielanie)"
+                    beforeValue={MANUAL_KPO_MIN}
+                    afterValue={AUTO_KPO_MIN * 60}
+                    beforeUnit="min"
+                    afterUnit="s"
                     decimals={1}
                     percent={pct(kpoSaved)}
                   />
                   <BreakdownRow
-                    label={`KEO (${calc.keo.toLocaleString("pl-PL")} szt.)`}
-                    beforeValue={calc.keoTimeManual}
-                    afterValue={calc.keoTimeAuto}
-                    unit="min"
-                    decimals={0}
+                    label="1× wpis KEO"
+                    beforeValue={MANUAL_KEO_MIN}
+                    afterValue={0}
+                    beforeUnit="min"
+                    afterUnit="s"
+                    decimals={1}
                     percent={pct(keoSaved)}
-                    afterLabel="automatycznie"
+                    afterLabel="automatycznie (0 s)"
                   />
                   <BreakdownRow
-                    label="Wnioski DPR"
-                    beforeValue={calc.dprTimeManual}
-                    afterValue={calc.dprTimeAuto}
-                    unit="min"
-                    decimals={1}
+                    label="1× wniosek DPR"
+                    beforeValue={MANUAL_DPR_MIN}
+                    afterValue={AUTO_DPR_MIN * 60}
+                    beforeUnit="min"
+                    afterUnit="s"
+                    decimals={0}
                     percent={pct(dprSaved)}
                   />
                   <BreakdownRow
-                    label="Tworzenie raportów"
-                    beforeValue={calc.reportTimeManual / 60}
-                    afterValue={calc.reportTimeAuto / 60}
-                    unit="h"
+                    label="1× raport per MPD"
+                    beforeValue={MANUAL_REPORT_MIN}
+                    afterValue={AUTO_REPORT_MIN * 60}
+                    beforeUnit="min"
+                    afterUnit="s"
                     decimals={1}
                     percent={pct(reportSaved)}
                   />
                   {manualReport && (
                     <BreakdownRow
-                      label="Sprawozdanie roczne (mc)"
-                      beforeValue={MANUAL_BDO_REPORT_MIN / 12}
-                      afterValue={AUTO_BDO_REPORT_MIN / 12}
-                      unit="min"
+                      label="Sprawozdanie roczne BDO"
+                      beforeValue={MANUAL_BDO_REPORT_MIN / 60}
+                      afterValue={AUTO_BDO_REPORT_MIN * 60}
+                      beforeUnit="h"
+                      afterUnit="s"
                       decimals={1}
                       percent={pct(bdoSaved)}
-                      afterLabel="automatycznie"
                     />
                   )}
                 </div>
@@ -521,7 +529,8 @@ function BreakdownRow({
   label,
   beforeValue,
   afterValue,
-  unit,
+  beforeUnit,
+  afterUnit,
   percent,
   decimals = 0,
   afterLabel,
@@ -529,23 +538,23 @@ function BreakdownRow({
   label: string;
   beforeValue: number;
   afterValue: number;
-  unit: string;
+  beforeUnit: string;
+  afterUnit: string;
   percent: number;
   decimals?: number;
   afterLabel?: string;
 }) {
-  const clampedPercent = Math.max(0, Math.min(100, percent));
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-baseline text-sm gap-2">
         <span className="font-medium">{label}</span>
         <span className="text-muted-foreground tabular-nums">
           <span className="line-through">
-            <AnimatedNumber value={beforeValue} decimals={decimals} suffix={` ${unit}`} />
+            <AnimatedNumber value={beforeValue} decimals={decimals} suffix={` ${beforeUnit}`} />
           </span>{" "}
           →{" "}
           <span className="font-semibold text-primary">
-            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${unit}`} />}
+            {afterLabel ? afterLabel : <AnimatedNumber value={afterValue} decimals={decimals} suffix={` ${afterUnit}`} />}
           </span>
         </span>
       </div>
