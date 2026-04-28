@@ -10,7 +10,7 @@ const EXAMPLE_REPORTS = 10;
 const EXAMPLE_RATE = 40;
 const EXAMPLE_MANUAL_REPORT = true;
 
-const MONTHLY_COST = 500;
+const MONTHLY_COST = 360;
 
 // Automated times in Z360 (in minutes) — zmierzone średnie z dokumentu
 const AUTO_KPO_MIN = 24.2 / 60;         // 24,2 s — powielanie KPO
