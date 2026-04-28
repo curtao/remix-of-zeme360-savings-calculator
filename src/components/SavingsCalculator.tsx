@@ -20,15 +20,16 @@ const AUTO_REPORT_MIN = 30.25 / 60;     // 30,25 s — raport per MPD (audyt BDO
 const AUTO_BDO_REPORT_MIN = 35.22 / 60; // 35,22 s — sprawozdanie roczne BDO
 
 // Manual times in BDO (in minutes) — średnie wartości z zakresów
-const MANUAL_KPO_MIN = 7.5;             // 5–10 min (śr. 7,5)
-const MANUAL_KEO_MIN = 2;               // 1–3 min (śr. 2)
+const MANUAL_KPO_MIN = 3;               // 3 min manualnie
+const MANUAL_KEO_MIN = 10 / 60;         // 10 s manualnie
 const MANUAL_DPR_MIN = 60;              // 5 min – kilka godzin (śr. ~1 h)
 const MANUAL_REPORT_MIN = 90;           // kilkanaście min – kilka godzin (śr. 1,5 h)
 const MANUAL_BDO_REPORT_MIN = 720;      // kilka godzin – 1–2 dni robocze (śr. 1,5 dnia × 8 h)
 
 function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
   return useMemo(() => {
-    const keo = docs * 2; // KEO = 2x KPO
+    // 1 KPO = 2 KEO, ale czas klikania KEO odnosimy do liczby KPO (nie mnożymy ×2)
+    const keo = docs;
 
     const docTimeManual = docs * MANUAL_KPO_MIN;
     const docTimeAuto = docs * AUTO_KPO_MIN;
@@ -300,7 +301,7 @@ export default function SavingsCalculator() {
               <SliderWithInput
                 label="Wnioski DPR kwartalnie"
                 value={dpr}
-                min={1}
+                min={0}
                 max={50}
                 step={1}
                 onChange={wrap(setDpr)}
