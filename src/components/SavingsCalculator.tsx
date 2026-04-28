@@ -20,16 +20,16 @@ const AUTO_REPORT_MIN = 30.25 / 60;     // 30,25 s — raport per MPD (audyt BDO
 const AUTO_BDO_REPORT_MIN = 35.22 / 60; // 35,22 s — sprawozdanie roczne BDO
 
 // Manual times in BDO (in minutes) — średnie wartości z zakresów
-const MANUAL_KPO_MIN = 3;               // 3 min manualnie
-const MANUAL_KEO_MIN = 10 / 60;         // 10 s manualnie
+const MANUAL_KPO_MIN = 10 / 60;         // 10 s manualnie (1 KPO)
+const MANUAL_KEO_MIN = 3;               // 3 min manualnie (1 KEO = 2 KPO)
 const MANUAL_DPR_MIN = 60;              // 5 min – kilka godzin (śr. ~1 h)
 const MANUAL_REPORT_MIN = 90;           // kilkanaście min – kilka godzin (śr. 1,5 h)
 const MANUAL_BDO_REPORT_MIN = 720;      // kilka godzin – 1–2 dni robocze (śr. 1,5 dnia × 8 h)
 
 function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
   return useMemo(() => {
-    // 1 KPO = 2 KEO; każde KEO = 10 s manualnie
-    const keo = docs * 2;
+    // 2 KPO = 1 KEO; KPO = 10 s, KEO = 3 min
+    const keo = docs / 2;
 
     const docTimeManual = docs * MANUAL_KPO_MIN;
     const docTimeAuto = docs * AUTO_KPO_MIN;
