@@ -292,7 +292,7 @@ export default function SavingsCalculator() {
                 <span>
                   KEO miesięcznie (automatycznie):{" "}
                   <span className="font-semibold text-primary">{calc.keo.toLocaleString("pl-PL")}</span>{" "}
-                  — szacujemy 2× liczbę KPO (~1–3 min manualnie / 0 s w Z360).
+                  — 1 KPO = 2 KEO (~10 s manualnie / 0 s w Z360).
                 </span>
               </div>
             </div>
