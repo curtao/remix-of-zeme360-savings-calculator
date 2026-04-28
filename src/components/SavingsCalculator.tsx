@@ -28,8 +28,8 @@ const MANUAL_BDO_REPORT_MIN = 720;      // kilka godzin – 1–2 dni robocze (�
 
 function useCalculations(docs: number, dpr: number, reports: number, rate: number, manualReport: boolean) {
   return useMemo(() => {
-    // 1 KPO = 2 KEO, ale czas klikania KEO odnosimy do liczby KPO (nie mnożymy ×2)
-    const keo = docs;
+    // 1 KPO = 2 KEO; każde KEO = 10 s manualnie
+    const keo = docs * 2;
 
     const docTimeManual = docs * MANUAL_KPO_MIN;
     const docTimeAuto = docs * AUTO_KPO_MIN;
