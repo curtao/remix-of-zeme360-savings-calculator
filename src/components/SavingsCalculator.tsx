@@ -515,45 +515,27 @@ export default function SavingsCalculator() {
             })()}
           </div>
 
-          <div className="rounded-xl gradient-primary p-6 text-primary-foreground flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
-            <div>
-              <p className="text-lg font-bold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
-              <p className="text-sm opacity-90 mt-1">
-                Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
-              </p>
-            </div>
-            <QuoteRequestForm
-              snapshot={snapshot}
-              trigger={
-                <Button size="lg" variant="secondary" className="gap-2 shrink-0 font-semibold">
-                  <Send className="w-4 h-4" />
-                  Zapytaj o ofertę
-                </Button>
-              }
-            />
-          </div>
 
         </div>
       </div>
 
       <footer className="mt-12">
-        <div className="rounded-xl border border-zeme-teal/30 bg-zeme-teal/10 p-6 flex items-center gap-5">
-          <div className="w-20 h-20 shrink-0 rounded-full bg-card border-2 border-zeme-teal/40 overflow-hidden flex items-center justify-center text-muted-foreground text-xs">
-            Foto
+        <div className="rounded-xl gradient-primary p-6 text-primary-foreground flex items-center gap-5">
+          <div className="flex-1 text-left">
+            <p className="text-lg font-bold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
+            <p className="text-sm opacity-90 mt-1">
+              Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
+            </p>
           </div>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-muted-foreground mb-2">Skontaktuj się z nami</p>
-            <p className="text-lg font-bold text-foreground leading-tight">Urszula Głuch</p>
-            <p className="text-sm text-muted-foreground">Digital Expert</p>
-            <div className="flex items-center gap-2 text-sm font-medium text-primary mt-1">
-              <Phone className="w-4 h-4" />
-              <a href="tel:+48531995454" className="hover:underline">531-995-454</a>
-            </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-primary">
-              <Mail className="w-4 h-4" />
-              <a href="mailto:urszula.gluch@zeme.com.pl" className="hover:underline">urszula.gluch@zeme.com.pl</a>
-            </div>
-          </div>
+          <QuoteRequestForm
+            snapshot={snapshot}
+            trigger={
+              <Button size="lg" variant="secondary" className="gap-2 shrink-0 font-semibold">
+                <Send className="w-4 h-4" />
+                Zapytaj o ofertę
+              </Button>
+            }
+          />
         </div>
       </footer>
     </div>
