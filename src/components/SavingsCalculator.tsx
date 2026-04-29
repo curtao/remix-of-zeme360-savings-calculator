@@ -248,6 +248,20 @@ export default function SavingsCalculator() {
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
+  const snapshot: CalculatorSnapshot = {
+    docs,
+    keo: calc.keo,
+    dpr,
+    reports,
+    rate,
+    manualReport,
+    monthlySavings: calc.monthlySavings,
+    annualSavings: calc.annualSavings,
+    totalTimeSavedHours: calc.totalTimeSavedHours,
+    efficiencyPercent: calc.efficiencyPercent,
+    roiMonths: calc.roiMonths,
+  };
+
   const handleInteraction = () => {
     if (isExample) setIsExample(false);
   };
