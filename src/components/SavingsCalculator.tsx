@@ -471,7 +471,7 @@ export default function SavingsCalculator() {
                     percent={pct(kpoSaved)}
                   />
                   <BreakdownRow
-                    label={`KEO (${calc.keo.toLocaleString("pl-PL")} kliknięcia)`}
+                    label={`KEO (${calc.keo.toLocaleString("pl-PL")} klik)`}
                     beforeValue={calc.keoTimeManual}
                     afterValue={calc.keoTimeAuto}
                     beforeUnit="min"
