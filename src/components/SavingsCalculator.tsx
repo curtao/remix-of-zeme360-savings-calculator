@@ -2,7 +2,9 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info, Phone, Mail } from "lucide-react";
+import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info, Phone, Mail, Send } from "lucide-react";
+import QuoteRequestForm, { type CalculatorSnapshot } from "./QuoteRequestForm";
+import { Button } from "@/components/ui/button";
 
 const EXAMPLE_DOCS = 500;
 const EXAMPLE_DPR = 5;
@@ -245,6 +247,20 @@ export default function SavingsCalculator() {
   const [manualReport, setManualReport] = useState(EXAMPLE_MANUAL_REPORT);
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
+
+  const snapshot: CalculatorSnapshot = {
+    docs,
+    keo: calc.keo,
+    dpr,
+    reports,
+    rate,
+    manualReport,
+    monthlySavings: calc.monthlySavings,
+    annualSavings: calc.annualSavings,
+    totalTimeSavedHours: calc.totalTimeSavedHours,
+    efficiencyPercent: calc.efficiencyPercent,
+    roiMonths: calc.roiMonths,
+  };
 
   const handleInteraction = () => {
     if (isExample) setIsExample(false);
@@ -497,6 +513,24 @@ export default function SavingsCalculator() {
                 </div>
               );
             })()}
+          </div>
+
+          <div className="rounded-xl gradient-primary p-6 text-primary-foreground flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+            <div>
+              <p className="text-lg font-bold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
+              <p className="text-sm opacity-90 mt-1">
+                Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
+              </p>
+            </div>
+            <QuoteRequestForm
+              snapshot={snapshot}
+              trigger={
+                <Button size="lg" variant="secondary" className="gap-2 shrink-0 font-semibold">
+                  <Send className="w-4 h-4" />
+                  Zapytaj o ofertę
+                </Button>
+              }
+            />
           </div>
 
         </div>
