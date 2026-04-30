@@ -111,7 +111,7 @@ export default function QuoteRequestForm({ snapshot, trigger }: QuoteRequestForm
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
             <SummaryItem label="KPO / mc" value={snapshot.docs.toLocaleString("pl-PL")} />
-            <SummaryItem label="KEO / mc" value={snapshot.keo.toLocaleString("pl-PL")} />
+            
             <SummaryItem label="DPR / kw." value={snapshot.dpr.toLocaleString("pl-PL")} />
             <SummaryItem label="Raporty / mc" value={snapshot.reports.toLocaleString("pl-PL")} />
             <SummaryItem label="Stawka godz." value={`${snapshot.rate} zł`} />
