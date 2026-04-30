@@ -315,7 +315,7 @@ export default function SavingsCalculator() {
 
             <div className="space-y-2">
               <SliderWithInput
-                label="Wnioski DPR kwartalnie"
+                label="Zlecenia DPR kwartalnie"
                 value={dpr}
                 min={0}
                 max={50}
@@ -481,7 +481,7 @@ export default function SavingsCalculator() {
                     afterLabel="automatycznie"
                   />
                   <BreakdownRow
-                    label="Wnioski DPR"
+                    label="Zlecenia DPR"
                     beforeValue={calc.dprTimeManual}
                     afterValue={calc.dprTimeAuto}
                     beforeUnit="min"
