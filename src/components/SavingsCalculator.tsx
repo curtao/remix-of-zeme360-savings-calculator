@@ -165,7 +165,7 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
         </div>
         <span className={`text-sm font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
       </div>
-      <div className="text-2xl font-bold mt-1">{value}</div>
+      <div className="text-2xl font-semibold mt-1">{value}</div>
       {sublabel && <p className={`text-xs mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
     </div>
   );
@@ -218,9 +218,9 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
                 setDraft(String(clamped));
               }
             }}
-            className="h-8 w-24 text-right text-base font-bold text-primary px-2"
+            className="h-8 w-24 text-right text-base font-semibold text-primary px-2"
           />
-          {unit && <span className="text-sm font-bold text-primary">{unit}</span>}
+          {unit && <span className="text-sm font-semibold text-primary">{unit}</span>}
         </div>
       </div>
       <Slider
@@ -271,7 +271,7 @@ export default function SavingsCalculator() {
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
           <span className="text-gradient-primary">ZEME360</span>
         </h1>
@@ -384,11 +384,11 @@ export default function SavingsCalculator() {
               <div className="flex gap-6">
                 <div>
                   <p className="text-xs text-muted-foreground">Czas / mc</p>
-                  <p className="text-lg font-bold">{calc.bdoOnlyTimeSaved} h</p>
+                  <p className="text-lg font-semibold">{calc.bdoOnlyTimeSaved} h</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Oszczędność / mc</p>
-                  <p className="text-lg font-bold">{calc.bdoOnlyMonthlySavings} zł</p>
+                  <p className="text-lg font-semibold">{calc.bdoOnlyMonthlySavings} zł</p>
                 </div>
               </div>
             </div>
@@ -399,7 +399,7 @@ export default function SavingsCalculator() {
           <div className="gradient-primary rounded-xl p-6 text-primary-foreground">
             <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-4xl md:text-5xl font-extrabold">
+              <span className="text-4xl md:text-5xl font-semibold">
                 <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
               </span>
               <span className="text-lg opacity-80">
@@ -522,7 +522,7 @@ export default function SavingsCalculator() {
       <footer className="mt-12">
         <div className="rounded-xl gradient-primary p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
-            <p className="text-lg font-bold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
+            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
             <p className="text-sm opacity-90 mt-1">
               Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
             </p>
