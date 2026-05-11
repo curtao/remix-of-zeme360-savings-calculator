@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-grotesk@300,400,500,600,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -63,7 +63,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-montserrat antialiased;
+    @apply bg-background text-foreground font-clash antialiased;
   }
 }
 

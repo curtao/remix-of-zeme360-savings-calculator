@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        clash: ["Clash Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
