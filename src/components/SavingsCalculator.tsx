@@ -355,7 +355,7 @@ export default function SavingsCalculator() {
               />
               <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>Koszt godziny pracy twojego pracownika.</span>
+                <span>Koszt godziny pracy Twojego pracownika.</span>
               </div>
             </div>
 
