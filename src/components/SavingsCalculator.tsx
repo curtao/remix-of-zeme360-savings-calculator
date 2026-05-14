@@ -160,7 +160,7 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
   return (
     <div className={`p-5 ${bgClass} transition-all duration-300 hover:shadow-lg`}>
       <div className="flex items-center gap-3 mb-2">
-        <div className={`p-2 rounded-md ${variant === "default" ? "bg-secondary" : "bg-primary-foreground/20"}`}>
+        <div className={`p-2 rounded-md ${variant === "default" ? "bg-[#EDFFF6]" : "bg-primary-foreground/20"}`}>
           {icon}
         </div>
         <span className={`text-sm font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
