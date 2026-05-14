@@ -276,7 +276,7 @@ export default function SavingsCalculator() {
           <span className="text-[#00DEAB]">ZEME 360</span>
         </h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO, KEO i sprawozdań środowiskowych.
+          Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO.
         </p>
         {isExample && (
           <div className="mt-4 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium">
