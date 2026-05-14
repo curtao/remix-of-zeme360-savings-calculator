@@ -306,9 +306,9 @@ export default function SavingsCalculator() {
               <div className="flex items-start gap-2 text-xs text-muted-foreground bg-secondary/50 rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>
-                  KEO miesięcznie (automatycznie):{" "}
+                  Na podstawie liczby KPO kalkulator liczy oszczędność czasu na stworzeniu i zarządzaniu KPO oraz stworzeniu wpisów w KEO (w tym przypadku to ok.{" "}
                   <span className="font-semibold text-primary">{calc.keo.toLocaleString("pl-PL")}</span>{" "}
-                  — 1 KPO = 2 KEO (~1–3 min manualnie / 0 s w Z360).
+                  wpisów).
                 </span>
               </div>
             </div>
