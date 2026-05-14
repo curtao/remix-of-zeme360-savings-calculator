@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info, Send } from "lucide-react";
+import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info } from "lucide-react";
 import QuoteRequestForm, { type CalculatorSnapshot } from "./QuoteRequestForm";
 import { Button } from "@/components/ui/button";
 
@@ -279,7 +279,7 @@ export default function SavingsCalculator() {
           Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO.
         </p>
         {isExample && (
-          <div className="mt-4 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium">
+          <div className="mt-4 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium border-[0.5px] border-primary">
             <Zap className="w-4 h-4" />
             Przykładowe dane — zacznij wypełniać, aby zobaczyć swoje oszczędności
           </div>
@@ -355,7 +355,7 @@ export default function SavingsCalculator() {
               />
               <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>Koszt godziny pracy twojego pracownika.</span>
+                <span>Koszt godziny pracy Twojego pracownika.</span>
               </div>
             </div>
 
@@ -522,16 +522,15 @@ export default function SavingsCalculator() {
       <footer className="mt-12">
         <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
-            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
+            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
             <p className="text-sm opacity-90 mt-1">
-              Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
+              Wyślij zapytanie ofertowe – Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
             </p>
           </div>
           <QuoteRequestForm
             snapshot={snapshot}
             trigger={
               <Button size="lg" className="gap-2 shrink-0 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
-                <Send className="w-4 h-4" />
                 Zapytaj o ofertę
               </Button>
             }
