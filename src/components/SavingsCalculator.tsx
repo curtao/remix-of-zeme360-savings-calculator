@@ -279,7 +279,7 @@ export default function SavingsCalculator() {
           Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO.
         </p>
         {isExample && (
-          <div className="mt-4 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium">
+          <div className="mt-4 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium border-[0.5px] border-primary">
             <Zap className="w-4 h-4" />
             Przykładowe dane — zacznij wypełniać, aby zobaczyć swoje oszczędności
           </div>
