@@ -158,7 +158,7 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
     : "bg-card border border-border";
 
   return (
-    <div className={`rounded-lg p-5 ${bgClass} transition-all duration-300 hover:shadow-lg`}>
+    <div className={`p-5 ${bgClass} transition-all duration-300 hover:shadow-lg`}>
       <div className="flex items-center gap-3 mb-2">
         <div className={`p-2 rounded-md ${variant === "default" ? "bg-secondary" : "bg-primary-foreground/20"}`}>
           {icon}
@@ -288,7 +288,7 @@ export default function SavingsCalculator() {
 
       <div className="grid lg:grid-cols-5 gap-8">
         <div className="lg:col-span-2 space-y-4">
-          <div className="bg-card rounded-xl border border-border p-6 space-y-8">
+          <div className="bg-card border border-border p-6 space-y-8">
             <h2 className="text-lg font-semibold flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               Twoje parametry
@@ -373,7 +373,7 @@ export default function SavingsCalculator() {
           </div>
 
           {manualReport && (
-            <div className="rounded-xl border-2 border-zeme-yellow bg-zeme-yellow/10 p-5">
+            <div className="border-2 border-zeme-yellow bg-zeme-yellow/10 p-5">
               <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
                 Dodatkowe oszczędności z automatyzacji BDO
@@ -396,7 +396,7 @@ export default function SavingsCalculator() {
         </div>
 
         <div className="lg:col-span-3 space-y-4">
-          <div className="gradient-primary rounded-xl p-6 text-primary-foreground">
+          <div className="gradient-primary p-6 text-primary-foreground">
             <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
             <div className="flex flex-wrap items-baseline gap-4">
               <span className="text-4xl md:text-5xl font-semibold">
@@ -445,7 +445,7 @@ export default function SavingsCalculator() {
             />
           </div>
 
-          <div className="bg-card rounded-xl border border-border p-5">
+          <div className="bg-card border border-border p-5">
             <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary" />
               Szczegółowy podział oszczędzonego czasu
@@ -520,7 +520,7 @@ export default function SavingsCalculator() {
       </div>
 
       <footer className="mt-12">
-        <div className="rounded-xl gradient-primary p-6 text-primary-foreground flex items-center gap-5">
+        <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
             <p className="text-lg font-semibold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
             <p className="text-sm opacity-90 mt-1">
@@ -530,7 +530,7 @@ export default function SavingsCalculator() {
           <QuoteRequestForm
             snapshot={snapshot}
             trigger={
-              <Button size="lg" variant="secondary" className="gap-2 shrink-0 font-semibold">
+              <Button size="lg" className="gap-2 shrink-0 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
                 <Send className="w-4 h-4" />
                 Zapytaj o ofertę
               </Button>
