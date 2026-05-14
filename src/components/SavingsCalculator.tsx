@@ -273,7 +273,7 @@ export default function SavingsCalculator() {
       <div className="text-center mb-10">
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
-          <span className="text-gradient-primary">ZEME360</span>
+          <span className="text-[#00DEAB]">ZEME 360</span>
         </h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO, KEO i sprawozdań środowiskowych.
