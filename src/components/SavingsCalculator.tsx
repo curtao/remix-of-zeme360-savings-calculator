@@ -522,16 +522,15 @@ export default function SavingsCalculator() {
       <footer className="mt-12">
         <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
-            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać ten czas i pieniądze?</p>
+            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
             <p className="text-sm opacity-90 mt-1">
-              Wyślij zapytanie ofertowe — Twoje dane z kalkulatora trafią od razu do handlowca.
+              Wyślij zapytanie ofertowe – Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
             </p>
           </div>
           <QuoteRequestForm
             snapshot={snapshot}
             trigger={
               <Button size="lg" className="gap-2 shrink-0 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
-                <Send className="w-4 h-4" />
                 Zapytaj o ofertę
               </Button>
             }
