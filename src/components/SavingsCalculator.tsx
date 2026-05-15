@@ -500,10 +500,10 @@ export default function SavingsCalculator() {
                   />
                   {manualReport && (
                     <BreakdownRow
-                      label="Sprawozdanie roczne (mc)"
+                      label="Sprawozdanie roczne"
                       beforeValue={MANUAL_BDO_REPORT_MIN / 12}
                       afterValue={AUTO_BDO_REPORT_MIN / 12}
-                      beforeUnit="min"
+                      beforeUnit="min. mies."
                       afterUnit="min"
                       decimals={1}
                       percent={pct(bdoSaved)}
