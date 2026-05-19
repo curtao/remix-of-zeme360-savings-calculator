@@ -415,6 +415,16 @@ export default function SavingsCalculator() {
             <p className="text-xs opacity-75 mt-3">
               * Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin.
             </p>
+            <div className="mt-5 pt-5 border-t border-primary-foreground/20">
+              <Button
+                onClick={scrollToContact}
+                size="lg"
+                className="w-full sm:w-auto gap-2 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
+              >
+                Umów prezentację ZEME 360
+              </Button>
+              <p className="text-xs opacity-80 mt-2">Bezpłatna, 30-minutowa prezentacja na żywo.</p>
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
