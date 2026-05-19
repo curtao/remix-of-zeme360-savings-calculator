@@ -541,7 +541,7 @@ export default function SavingsCalculator() {
         </div>
       </div>
 
-      <footer className="mt-12">
+      <footer ref={contactRef} id="kontakt" className="mt-12 scroll-mt-8">
         <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
             <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
