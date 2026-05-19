@@ -245,9 +245,6 @@ export default function SavingsCalculator() {
   const [reports, setReports] = useState(EXAMPLE_REPORTS);
   const [rate, setRate] = useState(EXAMPLE_RATE);
   const [manualReport, setManualReport] = useState(EXAMPLE_MANUAL_REPORT);
-  const contactRef = useRef<HTMLElement>(null);
-  const scrollToContact = () =>
-    contactRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
@@ -287,15 +284,6 @@ export default function SavingsCalculator() {
             Przykładowe dane — zacznij wypełniać, aby zobaczyć swoje oszczędności
           </div>
         )}
-        <div className="mt-5 lg:hidden">
-          <Button
-            onClick={scrollToContact}
-            size="lg"
-            className="gap-2 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
-          >
-            Umów prezentację ZEME 360
-          </Button>
-        </div>
       </div>
 
       <div className="grid lg:grid-cols-5 gap-8">
@@ -424,16 +412,6 @@ export default function SavingsCalculator() {
             <p className="text-xs opacity-75 mt-3">
               * Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin.
             </p>
-            <div className="mt-5 pt-5 border-t border-primary-foreground/20">
-              <Button
-                onClick={scrollToContact}
-                size="lg"
-                className="w-full sm:w-auto gap-2 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
-              >
-                Umów prezentację ZEME 360
-              </Button>
-              <p className="text-xs opacity-80 mt-2">Bezpłatna, 30-minutowa prezentacja na żywo.</p>
-            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
@@ -541,7 +519,7 @@ export default function SavingsCalculator() {
         </div>
       </div>
 
-      <footer ref={contactRef} id="kontakt" className="mt-12 scroll-mt-8">
+      <footer className="mt-12">
         <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
           <div className="flex-1 text-left">
             <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
