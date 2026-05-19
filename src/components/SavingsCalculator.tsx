@@ -287,6 +287,15 @@ export default function SavingsCalculator() {
             Przykładowe dane — zacznij wypełniać, aby zobaczyć swoje oszczędności
           </div>
         )}
+        <div className="mt-5 lg:hidden">
+          <Button
+            onClick={scrollToContact}
+            size="lg"
+            className="gap-2 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
+          >
+            Umów prezentację ZEME 360
+          </Button>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-5 gap-8">
