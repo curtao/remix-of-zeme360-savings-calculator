@@ -245,6 +245,9 @@ export default function SavingsCalculator() {
   const [reports, setReports] = useState(EXAMPLE_REPORTS);
   const [rate, setRate] = useState(EXAMPLE_RATE);
   const [manualReport, setManualReport] = useState(EXAMPLE_MANUAL_REPORT);
+  const contactRef = useRef<HTMLElement>(null);
+  const scrollToContact = () =>
+    contactRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
