@@ -291,7 +291,7 @@ export default function SavingsCalculator() {
             <div className="text-left">
               <p className="text-lg font-semibold leading-tight">Odzyskaj czas i pieniądze z ZEME 360</p>
               <p className="text-sm opacity-90 mt-1">
-                Umów się na konsultację, aby przekonać się jak bezproblemowo i łatwo można gospodarować odpadami w ZEME 360. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
+                Umów się na konsultację, aby przekonać się jak łatwo można zarządzać odpadami. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
               </p>
             </div>
             <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
