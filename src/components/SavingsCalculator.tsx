@@ -147,10 +147,11 @@ interface MetricCardProps {
   label: string;
   value: React.ReactNode;
   sublabel?: string;
+  footnote?: string;
   variant?: "default" | "gradient" | "accent";
 }
 
-function MetricCard({ icon, label, value, sublabel, variant = "default" }: MetricCardProps) {
+function MetricCard({ icon, label, value, sublabel, footnote, variant = "default" }: MetricCardProps) {
   const bgClass = variant === "gradient"
     ? "gradient-primary text-primary-foreground"
     : variant === "accent"
@@ -158,7 +159,7 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
     : "bg-card border border-border";
 
   return (
-    <div className={`p-5 ${bgClass} transition-all duration-300 hover:shadow-lg`}>
+    <div className={`p-5 ${bgClass} transition-all duration-300 hover:shadow-lg h-full flex flex-col`}>
       <div className="flex items-center gap-3 mb-2">
         <div className={`p-2 rounded-md ${variant === "default" ? "bg-[#EDFFF6]" : "bg-primary-foreground/20"}`}>
           {icon}
@@ -167,6 +168,7 @@ function MetricCard({ icon, label, value, sublabel, variant = "default" }: Metri
       </div>
       <div className="text-2xl font-semibold mt-1">{value}</div>
       {sublabel && <p className={`text-xs mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
+      {footnote && <p className={`text-xs mt-auto pt-3 ${variant === "default" ? "text-muted-foreground" : "opacity-75"}`}>{footnote}</p>}
     </div>
   );
 }
