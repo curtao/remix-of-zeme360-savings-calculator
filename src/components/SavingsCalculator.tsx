@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info } from "lucide-react";
-import QuoteRequestForm, { type CalculatorSnapshot } from "./QuoteRequestForm";
+
 import { Button } from "@/components/ui/button";
 
 const EXAMPLE_DOCS = 500;
