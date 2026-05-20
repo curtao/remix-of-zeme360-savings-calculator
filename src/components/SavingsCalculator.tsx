@@ -420,6 +420,7 @@ export default function SavingsCalculator() {
               label="Oszczędność czasu"
               value={<><AnimatedNumber value={calc.totalTimeSavedHours} suffix=" h" /> <span className="text-base font-normal text-muted-foreground">/ mc</span></>}
               sublabel={`≈ ${calc.totalTimeSavedDays} dni roboczych`}
+              footnote="* Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin."
             />
             <MetricCard
               icon={<PiggyBank className="w-4 h-4 text-primary" />}
