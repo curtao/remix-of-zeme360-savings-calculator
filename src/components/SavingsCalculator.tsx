@@ -411,10 +411,8 @@ export default function SavingsCalculator() {
             <p className="text-sm opacity-80 mt-2">
               rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
             </p>
-            <p className="text-xs opacity-75 mt-3">
-              * Kalkulator zaokrągla zaoszczędzony czas do pełnych godzin.
-            </p>
           </div>
+
 
           <div className="grid sm:grid-cols-2 gap-4">
             <MetricCard
