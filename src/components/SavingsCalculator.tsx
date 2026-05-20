@@ -288,14 +288,50 @@ export default function SavingsCalculator() {
         )}
       </div>
 
-      <div className="grid lg:grid-cols-5 gap-8">
-        <div className="lg:col-span-2 space-y-4">
-          <div className="bg-card border border-border p-6 space-y-8">
-            <h2 className="text-lg font-semibold flex items-center gap-2">
-              <FileText className="w-5 h-5 text-primary" />
-              Twoje parametry
-            </h2>
+      <div className="space-y-6">
+        {/* Row 1: Monthly savings | CTA */}
+        <div className="grid lg:grid-cols-2 gap-4">
+          <div className="gradient-primary p-6 text-primary-foreground flex flex-col justify-center">
+            <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
+            <div className="flex flex-wrap items-baseline gap-4">
+              <span className="text-4xl md:text-5xl font-semibold">
+                <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
+              </span>
+              <span className="text-lg opacity-80">
+                / <AnimatedNumber value={calc.totalTimeSavedHours} suffix=" h" />
+              </span>
+            </div>
+            <p className="text-sm opacity-80 mt-2">
+              rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
+            </p>
+          </div>
 
+          <div className="bg-black p-6 text-primary-foreground flex flex-col justify-center gap-4">
+            <div className="text-left">
+              <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
+              <p className="text-sm opacity-90 mt-1">
+                Wyślij zapytanie ofertowe – Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
+              </p>
+            </div>
+            <QuoteRequestForm
+              snapshot={snapshot}
+              trigger={
+                <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
+                  Umów prezentację
+                </Button>
+              }
+            />
+          </div>
+        </div>
+
+        {/* Row 2: Parameters horizontal */}
+        <div className="bg-card border border-border p-6 space-y-6">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <FileText className="w-5 h-5 text-primary" />
+            Twoje parametry
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="space-y-2">
               <SliderWithInput
                 label="KPO miesięcznie"
@@ -360,18 +396,18 @@ export default function SavingsCalculator() {
                 <span>Koszt godziny pracy Twojego pracownika.</span>
               </div>
             </div>
+          </div>
 
-            <div className="flex items-start gap-3 pt-2">
-              <Checkbox
-                id="manual-report"
-                checked={manualReport}
-                onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
-                className="mt-0.5"
-              />
-              <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
-                Sprawozdanie roczne przygotowuję manualnie
-              </label>
-            </div>
+          <div className="flex items-start gap-3 pt-2">
+            <Checkbox
+              id="manual-report"
+              checked={manualReport}
+              onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
+              className="mt-0.5"
+            />
+            <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
+              Sprawozdanie roczne przygotowuję manualnie
+            </label>
           </div>
 
           {manualReport && (
@@ -397,24 +433,9 @@ export default function SavingsCalculator() {
           )}
         </div>
 
-        <div className="lg:col-span-3 space-y-4">
-          <div className="gradient-primary p-6 text-primary-foreground">
-            <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
-            <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-4xl md:text-5xl font-semibold">
-                <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
-              </span>
-              <span className="text-lg opacity-80">
-                / <AnimatedNumber value={calc.totalTimeSavedHours} suffix=" h" />
-              </span>
-            </div>
-            <p className="text-sm opacity-80 mt-2">
-              rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
-            </p>
-          </div>
-
-
-          <div className="grid sm:grid-cols-2 gap-4">
+        {/* Row 3: Metric cards | Breakdown */}
+        <div className="grid lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <MetricCard
               icon={<Clock className="w-4 h-4 text-primary" />}
               label="Oszczędność czasu"
@@ -452,7 +473,6 @@ export default function SavingsCalculator() {
               Szczegółowy podział oszczędzonego czasu
             </h3>
             {(() => {
-              // Łączne czasy miesięczne — dynamicznie zależne od suwaków
               const kpoSaved = calc.docTimeManual - calc.docTimeAuto;
               const keoSaved = calc.keoTimeManual - calc.keoTimeAuto;
               const dprSaved = calc.dprTimeManual - calc.dprTimeAuto;
@@ -515,29 +535,8 @@ export default function SavingsCalculator() {
               );
             })()}
           </div>
-
-
         </div>
       </div>
-
-      <footer className="mt-12">
-        <div className="bg-black p-6 text-primary-foreground flex items-center gap-5">
-          <div className="flex-1 text-left">
-            <p className="text-lg font-semibold leading-tight">Chcesz odzyskać czas i pieniądze?</p>
-            <p className="text-sm opacity-90 mt-1">
-              Wyślij zapytanie ofertowe – Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
-            </p>
-          </div>
-          <QuoteRequestForm
-            snapshot={snapshot}
-            trigger={
-              <Button size="lg" className="gap-2 shrink-0 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
-                Zapytaj o ofertę
-              </Button>
-            }
-          />
-        </div>
-      </footer>
     </div>
   );
 }
