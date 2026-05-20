@@ -313,14 +313,9 @@ export default function SavingsCalculator() {
                 Umów się na konsultację, aby przekonać się jak bezproblemowo i łatwo można gospodarować odpadami w ZEME 360. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
               </p>
             </div>
-            <QuoteRequestForm
-              snapshot={snapshot}
-              trigger={
-                <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
-                  Umów prezentację
-                </Button>
-              }
-            />
+            <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
+              Umów prezentację
+            </Button>
           </div>
         </div>
 
