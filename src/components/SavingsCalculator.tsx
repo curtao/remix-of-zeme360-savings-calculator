@@ -3,7 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info } from "lucide-react";
-import QuoteRequestForm, { type CalculatorSnapshot } from "./QuoteRequestForm";
+
 import { Button } from "@/components/ui/button";
 
 const EXAMPLE_DOCS = 500;
@@ -250,19 +250,6 @@ export default function SavingsCalculator() {
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
-  const snapshot: CalculatorSnapshot = {
-    docs,
-    keo: calc.keo,
-    dpr,
-    reports,
-    rate,
-    manualReport,
-    monthlySavings: calc.monthlySavings,
-    annualSavings: calc.annualSavings,
-    totalTimeSavedHours: calc.totalTimeSavedHours,
-    efficiencyPercent: calc.efficiencyPercent,
-    roiMonths: calc.roiMonths,
-  };
 
   const handleInteraction = () => {
     if (isExample) setIsExample(false);
@@ -313,14 +300,9 @@ export default function SavingsCalculator() {
                 Umów się na konsultację, aby przekonać się jak bezproblemowo i łatwo można gospodarować odpadami w ZEME 360. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
               </p>
             </div>
-            <QuoteRequestForm
-              snapshot={snapshot}
-              trigger={
-                <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
-                  Umów prezentację
-                </Button>
-              }
-            />
+            <Button size="lg" className="gap-2 self-start font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none">
+              Umów prezentację
+            </Button>
           </div>
         </div>
 
