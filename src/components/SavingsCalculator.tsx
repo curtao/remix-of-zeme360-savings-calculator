@@ -265,13 +265,8 @@ export default function SavingsCalculator() {
           <span className="text-[#00DEAB]">ZEME 360</span>
         </h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO.
+          Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO. Poniżej prezentujemy przykładowe dane. Zacznij wypełniać, aby zobaczyć swoje oszczędności.
         </p>
-        {isExample && (
-          <div className="mt-4 inline-flex items-center gap-2 text-base font-medium text-[#2795CE]">
-            Poniżej prezentujemy przykładowe dane. Zacznij wypełniać, aby zobaczyć swoje oszczędności.
-          </div>
-        )}
       </div>
 
       <div className="space-y-6">
