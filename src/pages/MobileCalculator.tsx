@@ -127,6 +127,7 @@ interface StepShellProps {
   onNext: () => void;
   nextLabel?: string;
   canGoBack: boolean;
+  showHeader?: boolean;
 }
 
 function StepShell({
@@ -140,21 +141,24 @@ function StepShell({
   onNext,
   nextLabel = "Dalej",
   canGoBack,
+  showHeader = true,
 }: StepShellProps) {
   const progress = ((stepIndex + 1) / totalSteps) * 100;
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
-      <header className="px-5 pt-6 pb-4">
-        <p className="text-xs font-medium text-muted-foreground">
-          Krok {stepIndex + 1} / {totalSteps}
-        </p>
-        <div className="mt-2 h-1 w-full bg-secondary rounded-full overflow-hidden">
-          <div
-            className="h-full bg-[#00DEAB] transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </header>
+      {showHeader && (
+        <header className="px-5 pt-6 pb-4">
+          <p className="text-xs font-medium text-muted-foreground">
+            Krok {stepIndex + 1} / {totalSteps}
+          </p>
+          <div className="mt-2 h-1 w-full bg-secondary rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#00DEAB] transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </header>
+      )}
 
       <main className="flex-1 px-5 pt-6 pb-4">
         <div className="flex items-center gap-3 mb-3">
