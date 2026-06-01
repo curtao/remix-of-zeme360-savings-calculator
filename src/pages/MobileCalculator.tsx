@@ -326,6 +326,7 @@ export default function MobileCalculator() {
         onNext={next}
         canGoBack={false}
         nextLabel="Zacznij"
+        showHeader={false}
       >
         <div className="space-y-3 mt-4">
           {[
@@ -353,8 +354,8 @@ export default function MobileCalculator() {
   if (step === 1) {
     return (
       <StepShell
-        stepIndex={1}
-        totalSteps={TOTAL_STEPS}
+        stepIndex={0}
+        totalSteps={4}
         title="KPO miesięcznie"
         description={`Na podstawie liczby KPO obliczymy też wpisy w KEO (ok. ${calc.keo.toLocaleString(
           "pl-PL"
@@ -379,8 +380,8 @@ export default function MobileCalculator() {
   if (step === 2) {
     return (
       <StepShell
-        stepIndex={2}
-        totalSteps={TOTAL_STEPS}
+        stepIndex={1}
+        totalSteps={4}
         title="Zlecenia DPR kwartalnie"
         description="Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12)."
         icon={<CalendarDays className="w-5 h-5 text-primary" />}
@@ -397,8 +398,8 @@ export default function MobileCalculator() {
   if (step === 3) {
     return (
       <StepShell
-        stepIndex={3}
-        totalSteps={TOTAL_STEPS}
+        stepIndex={2}
+        totalSteps={4}
         title="Raporty miesięcznie"
         description="Liczba raportów, które tworzysz na podstawie danych odpadowych."
         icon={<BarChart3 className="w-5 h-5 text-primary" />}
@@ -435,8 +436,8 @@ export default function MobileCalculator() {
   if (step === 4) {
     return (
       <StepShell
-        stepIndex={4}
-        totalSteps={TOTAL_STEPS}
+        stepIndex={3}
+        totalSteps={4}
         title="Koszt godziny pracy"
         description="Koszt godziny pracy Twojego pracownika."
         icon={<PiggyBank className="w-5 h-5 text-primary" />}
