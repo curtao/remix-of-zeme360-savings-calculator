@@ -273,7 +273,7 @@ export default function SavingsCalculator() {
         {/* Row 1: Monthly savings | CTA */}
         <div className="grid lg:grid-cols-2 gap-4">
           <div className="bg-[#00DEAB] p-6 text-black flex flex-col justify-center">
-            <p className="text-fs-small font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
+            <p className="text-fs-regular font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
             <div className="flex flex-wrap items-baseline gap-4">
               <span className="text-h4 md:text-h3 font-semibold">
                 <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
