@@ -486,7 +486,7 @@ export default function MobileCalculator() {
       <main className="flex-1 px-5 pb-6 space-y-4">
         {/* Hero */}
         <div className="bg-[#00DEAB] text-black p-6">
-          <p className="text-sm font-medium opacity-90 mb-1">
+          <p className="text-fs-regular font-medium opacity-90 mb-1">
             Miesięczne oszczędności
           </p>
           <div className="flex flex-wrap items-baseline gap-3">
@@ -507,7 +507,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <Clock className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Czas / mc</span>
+              <span className="text-fs-regular text-muted-foreground">Czas / mc</span>
             </div>
             <p className="text-xl font-semibold">{calc.totalTimeSavedHours} h</p>
             <p className="text-[11px] text-muted-foreground mt-0.5">
@@ -517,7 +517,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <TrendingUp className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Efektywność</span>
+              <span className="text-fs-regular text-muted-foreground">Efektywność</span>
             </div>
             <p className="text-xl font-semibold">{calc.efficiencyPercent}%</p>
             <p className="text-[11px] text-muted-foreground mt-0.5">
@@ -527,7 +527,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <PiggyBank className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Rocznie</span>
+              <span className="text-fs-regular text-muted-foreground">Rocznie</span>
             </div>
             <p className="text-xl font-semibold">
               {calc.annualSavings.toLocaleString("pl-PL")} zł
