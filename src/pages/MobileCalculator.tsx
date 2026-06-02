@@ -148,7 +148,7 @@ function StepShell({
     <div className="flex flex-col min-h-[100dvh] bg-background">
       {showHeader && (
         <header className="px-5 pt-6 pb-4">
-          <p className="text-xs font-medium text-muted-foreground">
+          <p className="text-fs-regular font-medium text-muted-foreground">
             Krok {stepIndex + 1} / {totalSteps}
           </p>
           <div className="mt-2 h-1 w-full bg-secondary rounded-full overflow-hidden">
@@ -163,10 +163,10 @@ function StepShell({
       <main className="flex-1 px-5 pt-6 pb-4">
         <div className="flex items-center gap-3 mb-3">
           <div className="p-2 rounded-md bg-[#EDFFF6]">{icon}</div>
-          <h2 className="text-xl font-semibold leading-tight">{title}</h2>
+          <h2 className="text-h5 font-semibold leading-tight">{title}</h2>
         </div>
         {description && (
-          <p className="text-sm text-muted-foreground mb-6">{description}</p>
+          <p className="text-fs-regular text-foreground mb-6">{description}</p>
         )}
         {children}
       </main>
@@ -285,7 +285,7 @@ function DetailRow({
     });
   return (
     <div className="py-2 border-b border-border/60 last:border-0">
-      <p className="text-sm font-medium">{label}</p>
+      <p className="text-fs-regular font-medium">{label}</p>
       <p className="text-xs text-muted-foreground tabular-nums mt-1">
         <span className="line-through">
           {fmt(beforeValue)} {beforeUnit}
@@ -342,7 +342,7 @@ export default function MobileCalculator() {
               <span className="w-7 h-7 flex items-center justify-center bg-[#EDFFF6] text-primary font-semibold text-sm">
                 {i + 1}
               </span>
-              <span className="text-sm font-medium">{t}</span>
+              <span className="text-fs-regular font-medium">{t}</span>
             </div>
           ))}
         </div>
@@ -478,7 +478,7 @@ export default function MobileCalculator() {
         >
           <ChevronLeft className="w-5 h-5" />
         </Button>
-        <p className="text-sm font-medium text-muted-foreground">
+        <p className="text-fs-regular font-medium text-foreground">
           Twoje oszczędności
         </p>
       </header>
@@ -486,7 +486,7 @@ export default function MobileCalculator() {
       <main className="flex-1 px-5 pb-6 space-y-4">
         {/* Hero */}
         <div className="bg-[#00DEAB] text-black p-6">
-          <p className="text-sm font-medium opacity-90 mb-1">
+          <p className="text-fs-regular font-medium opacity-90 mb-1">
             Miesięczne oszczędności
           </p>
           <div className="flex flex-wrap items-baseline gap-3">
@@ -507,7 +507,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <Clock className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Czas / mc</span>
+              <span className="text-fs-regular text-muted-foreground">Czas / mc</span>
             </div>
             <p className="text-xl font-semibold">{calc.totalTimeSavedHours} h</p>
             <p className="text-[11px] text-muted-foreground mt-0.5">
@@ -517,7 +517,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <TrendingUp className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Efektywność</span>
+              <span className="text-fs-regular text-muted-foreground">Efektywność</span>
             </div>
             <p className="text-xl font-semibold">{calc.efficiencyPercent}%</p>
             <p className="text-[11px] text-muted-foreground mt-0.5">
@@ -527,7 +527,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <PiggyBank className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">Rocznie</span>
+              <span className="text-fs-regular text-muted-foreground">Rocznie</span>
             </div>
             <p className="text-xl font-semibold">
               {calc.annualSavings.toLocaleString("pl-PL")} zł
@@ -536,7 +536,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <CalendarDays className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">ROI</span>
+              <span className="text-fs-regular text-muted-foreground">ROI</span>
             </div>
             <p className="text-xl font-semibold">
               {calc.roiMonths === Infinity ? "—" : `${calc.roiMonths} mc`}
@@ -548,7 +548,7 @@ export default function MobileCalculator() {
         <Collapsible>
           <CollapsibleTrigger asChild>
             <button className="w-full p-4 bg-card border border-border flex items-center justify-between text-left">
-              <span className="text-sm font-semibold flex items-center gap-2">
+              <span className="text-fs-regular font-semibold flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-primary" />
                 Szczegółowy podział oszczędzonego czasu
               </span>
@@ -611,7 +611,7 @@ export default function MobileCalculator() {
           <Collapsible>
             <CollapsibleTrigger asChild>
               <button className="w-full p-4 border-2 border-zeme-yellow bg-zeme-yellow/10 flex items-center justify-between text-left">
-                <span className="text-sm font-semibold flex items-center gap-2">
+                <span className="text-fs-regular font-semibold flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
                   Dodatkowe oszczędności BDO
                 </span>
@@ -626,13 +626,13 @@ export default function MobileCalculator() {
                 </p>
                 <div className="flex gap-6">
                   <div>
-                    <p className="text-xs text-muted-foreground">Czas / mc</p>
+                    <p className="text-fs-regular text-muted-foreground">Czas / mc</p>
                     <p className="text-lg font-semibold">
                       {Math.round((bdoSaved / 60) * 10) / 10} h
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-fs-regular text-muted-foreground">
                       Oszczędność / mc
                     </p>
                     <p className="text-lg font-semibold">
