@@ -174,17 +174,17 @@ function StepShell({
       <footer className="sticky bottom-0 left-0 right-0 px-5 py-4 bg-background border-t border-border flex gap-3">
         {canGoBack && (
           <Button
-            variant="outline"
-            size="lg"
-            className="rounded-none"
+            variant="webflow-secondary"
+            size="webflow"
             onClick={onBack}
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
         )}
         <Button
-          size="lg"
-          className="flex-1 font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
+          variant="webflow"
+          size="webflow"
+          className="flex-1"
           onClick={onNext}
         >
           {nextLabel} <ChevronRight className="w-4 h-4 ml-1" />
