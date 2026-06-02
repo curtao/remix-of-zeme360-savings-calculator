@@ -163,7 +163,7 @@ function StepShell({
       <main className="flex-1 px-5 pt-6 pb-4">
         <div className="flex items-center gap-3 mb-3">
           <div className="p-2 rounded-md bg-[#EDFFF6]">{icon}</div>
-          <h2 className="text-xl font-semibold leading-tight">{title}</h2>
+          <h2 className="text-h5 font-semibold leading-tight">{title}</h2>
         </div>
         {description && (
           <p className="text-fs-regular text-foreground mb-6">{description}</p>
@@ -548,7 +548,7 @@ export default function MobileCalculator() {
         <Collapsible>
           <CollapsibleTrigger asChild>
             <button className="w-full p-4 bg-card border border-border flex items-center justify-between text-left">
-              <span className="text-sm font-semibold flex items-center gap-2">
+              <span className="text-fs-regular font-semibold flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-primary" />
                 Szczegółowy podział oszczędzonego czasu
               </span>
@@ -632,7 +632,7 @@ export default function MobileCalculator() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-fs-regular text-muted-foreground">
                       Oszczędność / mc
                     </p>
                     <p className="text-lg font-semibold">
