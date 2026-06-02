@@ -317,7 +317,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setDocs)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>
                   Na podstawie liczby KPO kalkulator liczy oszczędność czasu na stworzeniu i zarządzaniu KPO oraz stworzeniu wpisów w KEO (w tym przypadku to ok.{" "}
@@ -336,7 +336,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setDpr)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12).</span>
               </div>
@@ -351,7 +351,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setReports)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Liczba raportów, które tworzysz na podstawie danych odpadowych.</span>
               </div>
@@ -367,7 +367,7 @@ export default function SavingsCalculator() {
                 unit="zł"
                 onChange={wrap(setRate)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Koszt godziny pracy Twojego pracownika.</span>
               </div>
