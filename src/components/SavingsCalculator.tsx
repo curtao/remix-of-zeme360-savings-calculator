@@ -194,7 +194,7 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-center gap-3">
-        <label className="text-sm font-medium">{label}</label>
+        <label className="text-fs-small font-medium">{label}</label>
         <div className="flex items-center gap-1">
           <Input
             type="number"
@@ -220,9 +220,9 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
                 setDraft(String(clamped));
               }
             }}
-            className="h-8 w-24 text-right text-base font-semibold text-primary px-2"
+            className="h-8 w-24 text-right text-fs-regular font-semibold text-primary px-2"
           />
-          {unit && <span className="text-sm font-semibold text-primary">{unit}</span>}
+          {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
         </div>
       </div>
       <Slider
@@ -232,7 +232,7 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
         step={step}
         onValueChange={(v) => onChange(v[0])}
       />
-      <div className="flex justify-between text-xs text-muted-foreground">
+      <div className="flex justify-between text-fs-small text-muted-foreground">
         <span>{min.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
         <span>{max.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
       </div>
