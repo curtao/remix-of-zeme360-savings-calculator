@@ -164,11 +164,11 @@ function MetricCard({ icon, label, value, sublabel, footnote, variant = "default
         <div className={`p-2 rounded-md ${variant === "default" ? "bg-[#EDFFF6]" : "bg-primary-foreground/20"}`}>
           {icon}
         </div>
-        <span className={`text-sm font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
+        <span className={`text-fs-small font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
       </div>
-      <div className="text-2xl font-semibold mt-1">{value}</div>
-      {sublabel && <p className={`text-xs mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
-      {footnote && <p className={`text-xs mt-auto pt-3 ${variant === "default" ? "text-muted-foreground" : "opacity-75"}`}>{footnote}</p>}
+      <div className="text-h5 font-semibold mt-1">{value}</div>
+      {sublabel && <p className={`text-fs-small mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
+      {footnote && <p className={`text-fs-small mt-auto pt-3 ${variant === "default" ? "text-muted-foreground" : "opacity-75"}`}>{footnote}</p>}
     </div>
   );
 }
