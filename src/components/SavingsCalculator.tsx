@@ -538,7 +538,7 @@ function BreakdownRow({
 }) {
   return (
     <div className="space-y-1.5">
-      <div className="flex justify-between items-baseline text-sm gap-2">
+      <div className="flex justify-between items-baseline text-fs-small gap-2">
         <span className="font-medium">{label}</span>
         <span className="text-muted-foreground tabular-nums">
           <span className="line-through">
