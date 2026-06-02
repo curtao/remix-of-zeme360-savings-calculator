@@ -260,11 +260,11 @@ export default function SavingsCalculator() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+        <h1 className="text-h4 md:text-h3 font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
           <span className="text-[#00DEAB]">ZEME 360</span>
         </h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-fs-regular text-muted-foreground max-w-2xl mx-auto">
           Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO. Poniżej prezentujemy przykładowe dane. Zacznij wypełniać, aby zobaczyć swoje oszczędności.
         </p>
       </div>
