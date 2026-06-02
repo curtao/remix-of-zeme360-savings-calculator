@@ -166,7 +166,7 @@ function StepShell({
           <h2 className="text-xl font-semibold leading-tight">{title}</h2>
         </div>
         {description && (
-          <p className="text-sm text-muted-foreground mb-6">{description}</p>
+          <p className="text-fs-regular text-foreground mb-6">{description}</p>
         )}
         {children}
       </main>
@@ -285,7 +285,7 @@ function DetailRow({
     });
   return (
     <div className="py-2 border-b border-border/60 last:border-0">
-      <p className="text-sm font-medium">{label}</p>
+      <p className="text-fs-regular font-medium">{label}</p>
       <p className="text-xs text-muted-foreground tabular-nums mt-1">
         <span className="line-through">
           {fmt(beforeValue)} {beforeUnit}
@@ -342,7 +342,7 @@ export default function MobileCalculator() {
               <span className="w-7 h-7 flex items-center justify-center bg-[#EDFFF6] text-primary font-semibold text-sm">
                 {i + 1}
               </span>
-              <span className="text-sm font-medium">{t}</span>
+              <span className="text-fs-regular font-medium">{t}</span>
             </div>
           ))}
         </div>
@@ -478,7 +478,7 @@ export default function MobileCalculator() {
         >
           <ChevronLeft className="w-5 h-5" />
         </Button>
-        <p className="text-sm font-medium text-muted-foreground">
+        <p className="text-fs-regular font-medium text-foreground">
           Twoje oszczędności
         </p>
       </header>
