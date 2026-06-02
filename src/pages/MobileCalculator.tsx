@@ -536,7 +536,7 @@ export default function MobileCalculator() {
           <div className="p-4 bg-card border border-border">
             <div className="flex items-center gap-2 mb-1">
               <CalendarDays className="w-4 h-4 text-primary" />
-              <span className="text-xs text-muted-foreground">ROI</span>
+              <span className="text-fs-regular text-muted-foreground">ROI</span>
             </div>
             <p className="text-xl font-semibold">
               {calc.roiMonths === Infinity ? "—" : `${calc.roiMonths} mc`}
@@ -611,7 +611,7 @@ export default function MobileCalculator() {
           <Collapsible>
             <CollapsibleTrigger asChild>
               <button className="w-full p-4 border-2 border-zeme-yellow bg-zeme-yellow/10 flex items-center justify-between text-left">
-                <span className="text-sm font-semibold flex items-center gap-2">
+                <span className="text-fs-regular font-semibold flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
                   Dodatkowe oszczędności BDO
                 </span>
@@ -626,7 +626,7 @@ export default function MobileCalculator() {
                 </p>
                 <div className="flex gap-6">
                   <div>
-                    <p className="text-xs text-muted-foreground">Czas / mc</p>
+                    <p className="text-fs-regular text-muted-foreground">Czas / mc</p>
                     <p className="text-lg font-semibold">
                       {Math.round((bdoSaved / 60) * 10) / 10} h
                     </p>
