@@ -655,8 +655,9 @@ export default function MobileCalculator() {
             można gospodarować odpadami w ZEME 360.
           </p>
           <Button
-            size="lg"
-            className="mt-4 w-full font-semibold bg-[#00DEAB] text-black hover:bg-[#00DEAB]/90 rounded-none"
+            variant="webflow"
+            size="webflow"
+            className="mt-4 w-full"
           >
             <Calendar className="w-4 h-4 mr-2" />
             Umów prezentację
