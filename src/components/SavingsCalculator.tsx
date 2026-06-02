@@ -273,24 +273,24 @@ export default function SavingsCalculator() {
         {/* Row 1: Monthly savings | CTA */}
         <div className="grid lg:grid-cols-2 gap-4">
           <div className="bg-[#00DEAB] p-6 text-black flex flex-col justify-center">
-            <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
+            <p className="text-fs-small font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-4xl md:text-5xl font-semibold">
+              <span className="text-h4 md:text-h3 font-semibold">
                 <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
               </span>
-              <span className="text-lg opacity-80">
+              <span className="text-fs-large opacity-80">
                 / <AnimatedNumber value={calc.totalTimeSavedHours} suffix=" h" />
               </span>
             </div>
-            <p className="text-sm opacity-80 mt-2">
+            <p className="text-fs-small opacity-80 mt-2">
               rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
             </p>
           </div>
 
           <div className="bg-black p-6 text-primary-foreground flex flex-col justify-center gap-4">
             <div className="text-left">
-              <p className="text-lg font-semibold leading-tight">Odzyskaj czas i pieniądze z ZEME 360</p>
-              <p className="text-sm opacity-90 mt-1">
+              <p className="text-h6 font-semibold leading-tight">Odzyskaj czas i pieniądze z ZEME 360</p>
+              <p className="text-fs-small opacity-90 mt-1">
                 Umów się na konsultację, aby przekonać się jak łatwo można zarządzać odpadami. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
               </p>
             </div>
