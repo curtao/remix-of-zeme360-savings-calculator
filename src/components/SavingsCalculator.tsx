@@ -381,7 +381,7 @@ export default function SavingsCalculator() {
               onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
               className="mt-0.5"
             />
-            <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
+            <label htmlFor="manual-report" className="text-fs-regular leading-snug cursor-pointer">
               Sprawozdanie roczne przygotowuję manualnie
             </label>
           </div>
