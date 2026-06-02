@@ -15,12 +15,22 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Webflow ZEME button styles
+        webflow:
+          "rounded-none border border-[#00DEAB] bg-[#00DEAB] text-black font-medium transition-opacity duration-[400ms] hover:opacity-70",
+        "webflow-secondary":
+          "rounded-none border border-[#0AE9F9] bg-transparent text-black font-medium transition-[border-color,color,opacity] duration-[400ms] ease-out hover:border-[#00DEAB] hover:text-[#00DEAB]",
+        "webflow-tertiary":
+          "rounded-none border border-black bg-black text-white font-medium transition-opacity duration-[400ms] hover:opacity-70",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        // Webflow sizes (padding-based, no fixed height)
+        webflow: "h-auto px-6 py-3 text-base",
+        "webflow-sm": "h-auto px-5 py-2 text-base",
       },
     },
     defaultVariants: {
