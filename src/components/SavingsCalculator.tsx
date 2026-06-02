@@ -164,7 +164,7 @@ function MetricCard({ icon, label, value, sublabel, footnote, variant = "default
         <div className={`p-2 rounded-md ${variant === "default" ? "bg-[#EDFFF6]" : "bg-primary-foreground/20"}`}>
           {icon}
         </div>
-        <span className={`text-fs-small font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
+        <span className={`text-fs-regular font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
       </div>
       <div className="text-h5 font-semibold mt-1">{value}</div>
       {sublabel && <p className={`text-fs-small mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
@@ -194,7 +194,7 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-center gap-3">
-        <label className="text-fs-small font-medium">{label}</label>
+        <label className="text-fs-regular font-medium">{label}</label>
         <div className="flex items-center gap-1">
           <Input
             type="number"
@@ -444,7 +444,7 @@ export default function SavingsCalculator() {
           </div>
 
           <div className="bg-card border border-border p-5">
-            <h3 className="text-fs-small font-semibold mb-4 flex items-center gap-2">
+            <h3 className="text-fs-regular font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary" />
               Szczegółowy podział oszczędzonego czasu
             </h3>
