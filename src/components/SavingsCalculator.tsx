@@ -164,11 +164,11 @@ function MetricCard({ icon, label, value, sublabel, footnote, variant = "default
         <div className={`p-2 rounded-md ${variant === "default" ? "bg-[#EDFFF6]" : "bg-primary-foreground/20"}`}>
           {icon}
         </div>
-        <span className={`text-sm font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
+        <span className={`text-fs-small font-medium ${variant === "default" ? "text-muted-foreground" : ""}`}>{label}</span>
       </div>
-      <div className="text-2xl font-semibold mt-1">{value}</div>
-      {sublabel && <p className={`text-xs mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
-      {footnote && <p className={`text-xs mt-auto pt-3 ${variant === "default" ? "text-muted-foreground" : "opacity-75"}`}>{footnote}</p>}
+      <div className="text-h5 font-semibold mt-1">{value}</div>
+      {sublabel && <p className={`text-fs-small mt-1 ${variant === "default" ? "text-muted-foreground" : "opacity-80"}`}>{sublabel}</p>}
+      {footnote && <p className={`text-fs-small mt-auto pt-3 ${variant === "default" ? "text-muted-foreground" : "opacity-75"}`}>{footnote}</p>}
     </div>
   );
 }
@@ -194,7 +194,7 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-center gap-3">
-        <label className="text-sm font-medium">{label}</label>
+        <label className="text-fs-small font-medium">{label}</label>
         <div className="flex items-center gap-1">
           <Input
             type="number"
@@ -220,9 +220,9 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
                 setDraft(String(clamped));
               }
             }}
-            className="h-8 w-24 text-right text-base font-semibold text-primary px-2"
+            className="h-8 w-24 text-right text-fs-regular font-semibold text-primary px-2"
           />
-          {unit && <span className="text-sm font-semibold text-primary">{unit}</span>}
+          {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
         </div>
       </div>
       <Slider
@@ -232,7 +232,7 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
         step={step}
         onValueChange={(v) => onChange(v[0])}
       />
-      <div className="flex justify-between text-xs text-muted-foreground">
+      <div className="flex justify-between text-fs-small text-muted-foreground">
         <span>{min.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
         <span>{max.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
       </div>
@@ -260,11 +260,11 @@ export default function SavingsCalculator() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+        <h1 className="text-h4 md:text-h3 font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
           <span className="text-[#00DEAB]">ZEME 360</span>
         </h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-fs-regular text-muted-foreground max-w-2xl mx-auto">
           Sprawdź, ile czasu i pieniędzy możesz zaoszczędzić dzięki automatyzacji BDO. Poniżej prezentujemy przykładowe dane. Zacznij wypełniać, aby zobaczyć swoje oszczędności.
         </p>
       </div>
@@ -273,24 +273,24 @@ export default function SavingsCalculator() {
         {/* Row 1: Monthly savings | CTA */}
         <div className="grid lg:grid-cols-2 gap-4">
           <div className="bg-[#00DEAB] p-6 text-black flex flex-col justify-center">
-            <p className="text-sm font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
+            <p className="text-fs-small font-medium opacity-90 mb-1">Twoje miesięczne oszczędności</p>
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-4xl md:text-5xl font-semibold">
+              <span className="text-h4 md:text-h3 font-semibold">
                 <AnimatedNumber value={calc.monthlySavings} suffix=" zł" />
               </span>
-              <span className="text-lg opacity-80">
+              <span className="text-fs-large opacity-80">
                 / <AnimatedNumber value={calc.totalTimeSavedHours} suffix=" h" />
               </span>
             </div>
-            <p className="text-sm opacity-80 mt-2">
+            <p className="text-fs-small opacity-80 mt-2">
               rocznie: <AnimatedNumber value={calc.annualSavings} prefix="" suffix=" zł" />
             </p>
           </div>
 
           <div className="bg-black p-6 text-primary-foreground flex flex-col justify-center gap-4">
             <div className="text-left">
-              <p className="text-lg font-semibold leading-tight">Odzyskaj czas i pieniądze z ZEME 360</p>
-              <p className="text-sm opacity-90 mt-1">
+              <p className="text-h6 font-semibold leading-tight">Odzyskaj czas i pieniądze z ZEME 360</p>
+              <p className="text-fs-small opacity-90 mt-1">
                 Umów się na konsultację, aby przekonać się jak łatwo można zarządzać odpadami. Twoje dane z kalkulatora załączą się do wiadomości, którą możesz wysłać do handlowca.
               </p>
             </div>
@@ -302,7 +302,7 @@ export default function SavingsCalculator() {
 
         {/* Row 2: Parameters horizontal */}
         <div className="bg-card border border-border p-6 space-y-6">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
+          <h2 className="text-h6 font-semibold flex items-center gap-2">
             <FileText className="w-5 h-5 text-primary" />
             Twoje parametry
           </h2>
@@ -317,7 +317,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setDocs)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>
                   Na podstawie liczby KPO kalkulator liczy oszczędność czasu na stworzeniu i zarządzaniu KPO oraz stworzeniu wpisów w KEO (w tym przypadku to ok.{" "}
@@ -336,7 +336,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setDpr)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12).</span>
               </div>
@@ -351,7 +351,7 @@ export default function SavingsCalculator() {
                 step={1}
                 onChange={wrap(setReports)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Liczba raportów, które tworzysz na podstawie danych odpadowych.</span>
               </div>
@@ -367,7 +367,7 @@ export default function SavingsCalculator() {
                 unit="zł"
                 onChange={wrap(setRate)}
               />
-              <div className="flex items-start gap-2 text-xs text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
+              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
                 <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                 <span>Koszt godziny pracy Twojego pracownika.</span>
               </div>
@@ -381,28 +381,28 @@ export default function SavingsCalculator() {
               onCheckedChange={(v) => { setManualReport(!!v); handleInteraction(); }}
               className="mt-0.5"
             />
-            <label htmlFor="manual-report" className="text-sm leading-snug cursor-pointer">
+            <label htmlFor="manual-report" className="text-fs-regular leading-snug cursor-pointer">
               Sprawozdanie roczne przygotowuję manualnie
             </label>
           </div>
 
           {manualReport && (
             <div className="border-2 border-zeme-yellow bg-zeme-yellow/10 p-5">
-              <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-fs-regular font-semibold mb-2 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-zeme-yellow" />
                 Dodatkowe oszczędności z automatyzacji BDO
               </h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-fs-small text-muted-foreground mb-3">
                 Automatyczne sprawozdanie roczne oszczędza dodatkowy czas i pieniądze.
               </p>
               <div className="flex gap-6">
                 <div>
-                  <p className="text-xs text-muted-foreground">Czas / mc</p>
-                  <p className="text-lg font-semibold">{calc.bdoOnlyTimeSaved} h</p>
+                  <p className="text-fs-small text-muted-foreground">Czas / mc</p>
+                  <p className="text-fs-large font-semibold">{calc.bdoOnlyTimeSaved} h</p>
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground">Oszczędność / mc</p>
-                  <p className="text-lg font-semibold">{calc.bdoOnlyMonthlySavings} zł</p>
+                  <p className="text-fs-small text-muted-foreground">Oszczędność / mc</p>
+                  <p className="text-fs-large font-semibold">{calc.bdoOnlyMonthlySavings} zł</p>
                 </div>
               </div>
             </div>
@@ -444,7 +444,7 @@ export default function SavingsCalculator() {
           </div>
 
           <div className="bg-card border border-border p-5">
-            <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">
+            <h3 className="text-fs-small font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-4 h-4 text-primary" />
               Szczegółowy podział oszczędzonego czasu
             </h3>
@@ -538,7 +538,7 @@ function BreakdownRow({
 }) {
   return (
     <div className="space-y-1.5">
-      <div className="flex justify-between items-baseline text-sm gap-2">
+      <div className="flex justify-between items-baseline text-fs-small gap-2">
         <span className="font-medium">{label}</span>
         <span className="text-muted-foreground tabular-nums">
           <span className="line-through">
