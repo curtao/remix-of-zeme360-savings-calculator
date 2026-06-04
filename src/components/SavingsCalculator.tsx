@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
+import { useCalculatorEmit } from "@/hooks/useCalculatorEmit";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -250,6 +251,18 @@ export default function SavingsCalculator() {
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
 
+  useCalculatorEmit({
+    source: "desktop",
+    inputs: { docs, dpr, reports, rate, manualReport },
+    results: {
+      keo: calc.keo,
+      monthlySavings: calc.monthlySavings,
+      annualSavings: calc.annualSavings,
+      totalTimeSavedHours: calc.totalTimeSavedHours,
+      efficiencyPercent: calc.efficiencyPercent,
+      roiMonths: calc.roiMonths === Infinity ? 0 : calc.roiMonths,
+    },
+  });
 
   const handleInteraction = () => {
     if (isExample) setIsExample(false);

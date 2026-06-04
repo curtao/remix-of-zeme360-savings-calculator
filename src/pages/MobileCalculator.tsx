@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useCalculatorEmit } from "@/hooks/useCalculatorEmit";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -308,6 +309,19 @@ export default function MobileCalculator() {
   const [manualReport, setManualReport] = useState(true);
 
   const calc = useCalculations(docs, dpr, reports, rate, manualReport);
+
+  useCalculatorEmit({
+    source: "mobile",
+    inputs: { docs, dpr, reports, rate, manualReport },
+    results: {
+      keo: calc.keo,
+      monthlySavings: calc.monthlySavings,
+      annualSavings: calc.annualSavings,
+      totalTimeSavedHours: calc.totalTimeSavedHours,
+      efficiencyPercent: calc.efficiencyPercent,
+      roiMonths: calc.roiMonths === Infinity ? 0 : calc.roiMonths,
+    },
+  });
 
   const TOTAL_STEPS = 6;
 
