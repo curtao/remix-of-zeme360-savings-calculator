@@ -672,6 +672,10 @@ export default function MobileCalculator() {
             variant="webflow"
             size="webflow"
             className="mt-4 w-full"
+            onClick={() => {
+              const target = window.parent.document.getElementById("formularz-kontaktowy");
+              if (target) target.scrollIntoView({ behavior: "smooth" });
+            }}
           >
             <Calendar className="w-4 h-4 mr-2" />
             Umów prezentację
