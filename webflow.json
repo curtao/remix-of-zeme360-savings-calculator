@@ -1,0 +1,19 @@
+{
+  "library": {
+    "name": "Zeme DevLink Kalkulator",
+    "components": [
+      "./src/components/**/*.webflow.@(ts|tsx)"
+    ],
+    "globals": "/Users/krzysztofkostyra/Downloads/remix-of-zeme360-savings-calculator/src/globals.ts",
+    "bundleConfig": "/Users/krzysztofkostyra/Downloads/remix-of-zeme360-savings-calculator/webpack.webflow.cjs",
+    "description": "Savings Calculator ZEME",
+    "id": "zeme-devlink-kalkulator"
+  },
+  "telemetry": {
+    "global": {
+      "allowTelemetry": true,
+      "lastPrompted": 1780570445531,
+      "version": "2.0.0"
+    }
+  }
+}
