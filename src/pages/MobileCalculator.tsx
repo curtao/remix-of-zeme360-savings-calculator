@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useCalculatorEmit } from "@/hooks/useCalculatorEmit";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -208,6 +208,9 @@ interface ParamInputProps {
 function ParamInput({ value, min, max, step, unit, tooltip, onChange }: ParamInputProps) {
   const [draft, setDraft] = useState(String(value));
   const clamp = (n: number) => Math.min(max, Math.max(min, n));
+  useEffect(() => {
+    setDraft(String(value));
+  }, [value]);
   return (
     <div className="space-y-4 mt-2">
       <div className="flex items-baseline justify-center gap-2">
