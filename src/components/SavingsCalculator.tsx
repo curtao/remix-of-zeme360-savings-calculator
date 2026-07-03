@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useCalculatorEmit } from "@/hooks/useCalculatorEmit";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -180,10 +181,11 @@ interface SliderWithInputProps {
   max: number;
   step: number;
   unit?: string;
+  tooltip?: React.ReactNode;
   onChange: (v: number) => void;
 }
 
-function SliderWithInput({ label, value, min, max, step, unit, onChange }: SliderWithInputProps) {
+function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange }: SliderWithInputProps) {
   const clamp = (n: number) => Math.min(max, Math.max(min, n));
   const [draft, setDraft] = useState<string>(String(value));
 
@@ -193,7 +195,19 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
 
   return (
     <div className="space-y-2">
-      <label className="text-fs-regular font-medium whitespace-nowrap block">{label}</label>
+      <div className="flex items-center gap-1.5">
+        <label className="text-fs-regular font-medium whitespace-nowrap">{label}</label>
+        {tooltip && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Info className="w-3.5 h-3.5 text-primary cursor-help shrink-0" />
+            </TooltipTrigger>
+            <TooltipContent side="top" className="max-w-xs text-fs-small">
+              {tooltip}
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
       <div className="flex items-center gap-2">
         <Input
           type="number"
@@ -313,70 +327,52 @@ export default function SavingsCalculator() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="space-y-2">
-              <SliderWithInput
-                label="KPO miesięcznie"
-                value={docs}
-                min={1}
-                max={20000}
-                step={1}
-                onChange={wrap(setDocs)}
-              />
-              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
-                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>
+            <SliderWithInput
+              label="KPO miesięcznie"
+              value={docs}
+              min={1}
+              max={20000}
+              step={1}
+              tooltip={
+                <>
                   Na podstawie liczby KPO kalkulator liczy oszczędność czasu na stworzeniu i zarządzaniu KPO oraz stworzeniu wpisów w KEO (w tym przypadku to ok.{" "}
-                  <span className="font-semibold text-primary">{calc.keo.toLocaleString("pl-PL")}</span>{" "}
+                  <span className="font-semibold">{calc.keo.toLocaleString("pl-PL")}</span>{" "}
                   wpisów).
-                </span>
-              </div>
-            </div>
+                </>
+              }
+              onChange={wrap(setDocs)}
+            />
 
-            <div className="space-y-2">
-              <SliderWithInput
-                label="Zlecenia DPR kwartalnie"
-                value={dpr}
-                min={0}
-                max={50}
-                step={1}
-                onChange={wrap(setDpr)}
-              />
-              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
-                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12).</span>
-              </div>
-            </div>
+            <SliderWithInput
+              label="Zlecenia DPR kwartalnie"
+              value={dpr}
+              min={0}
+              max={50}
+              step={1}
+              tooltip="Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12)."
+              onChange={wrap(setDpr)}
+            />
 
-            <div className="space-y-2">
-              <SliderWithInput
-                label="Raporty miesięcznie"
-                value={reports}
-                min={1}
-                max={500}
-                step={1}
-                onChange={wrap(setReports)}
-              />
-              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
-                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>Liczba raportów, które tworzysz na podstawie danych odpadowych.</span>
-              </div>
-            </div>
+            <SliderWithInput
+              label="Raporty miesięcznie"
+              value={reports}
+              min={1}
+              max={500}
+              step={1}
+              tooltip="Liczba raportów, które tworzysz na podstawie danych odpadowych."
+              onChange={wrap(setReports)}
+            />
 
-            <div className="space-y-2">
-              <SliderWithInput
-                label="Koszt godziny pracy"
-                value={rate}
-                min={40}
-                max={200}
-                step={5}
-                unit="zł"
-                onChange={wrap(setRate)}
-              />
-              <div className="flex items-start gap-2 text-fs-small text-muted-foreground bg-[#EDFFF6] rounded-md px-3 py-2">
-                <Info className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                <span>Koszt godziny pracy Twojego pracownika.</span>
-              </div>
-            </div>
+            <SliderWithInput
+              label="Koszt godziny pracy"
+              value={rate}
+              min={40}
+              max={200}
+              step={5}
+              unit="zł"
+              tooltip="Koszt godziny pracy Twojego pracownika."
+              onChange={wrap(setRate)}
+            />
           </div>
 
           <div className="flex items-start gap-3 pt-2">
