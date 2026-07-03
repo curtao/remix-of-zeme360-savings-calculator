@@ -192,50 +192,40 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
   }, [value]);
 
   return (
-    <div className="space-y-3">
-      <div className="flex justify-between items-center gap-3">
-        <label className="text-fs-regular font-medium">{label}</label>
-        <div className="flex items-center gap-1">
-          <Input
-            type="number"
-            value={draft}
-            min={min}
-            max={max}
-            step={step}
-            onChange={(e) => {
-              const raw = e.target.value;
-              setDraft(raw);
-              const n = Number(raw);
-              if (raw !== "" && !isNaN(n) && n >= min && n <= max) {
-                onChange(n);
-              }
-            }}
-            onBlur={() => {
-              const n = Number(draft);
-              if (draft === "" || isNaN(n)) {
-                setDraft(String(value));
-              } else {
-                const clamped = clamp(n);
-                onChange(clamped);
-                setDraft(String(clamped));
-              }
-            }}
-            className="h-8 w-24 text-right text-fs-regular font-semibold text-primary px-2"
-          />
-          {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
-        </div>
+    <div className="space-y-2">
+      <label className="text-fs-regular font-medium whitespace-nowrap block">{label}</label>
+      <div className="flex items-center gap-2">
+        <Input
+          type="number"
+          value={draft}
+          min={min}
+          max={max}
+          step={step}
+          onChange={(e) => {
+            const raw = e.target.value;
+            setDraft(raw);
+            const n = Number(raw);
+            if (raw !== "" && !isNaN(n) && n >= min && n <= max) {
+              onChange(n);
+            }
+          }}
+          onBlur={() => {
+            const n = Number(draft);
+            if (draft === "" || isNaN(n)) {
+              setDraft(String(value));
+            } else {
+              const clamped = clamp(n);
+              onChange(clamped);
+              setDraft(String(clamped));
+            }
+          }}
+          className="h-10 w-full text-left text-fs-regular font-semibold text-primary px-3"
+        />
+        {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
       </div>
-      <Slider
-        value={[value]}
-        min={min}
-        max={max}
-        step={step}
-        onValueChange={(v) => onChange(v[0])}
-      />
-      <div className="flex justify-between text-fs-small text-muted-foreground">
-        <span>{min.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
-        <span>{max.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}</span>
-      </div>
+      <p className="text-fs-small text-muted-foreground">
+        * maksymalnie: {max.toLocaleString("pl-PL")}{unit ? ` ${unit}` : ""}
+      </p>
     </div>
   );
 }
