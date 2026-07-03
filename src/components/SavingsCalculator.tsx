@@ -181,10 +181,11 @@ interface SliderWithInputProps {
   max: number;
   step: number;
   unit?: string;
+  tooltip?: React.ReactNode;
   onChange: (v: number) => void;
 }
 
-function SliderWithInput({ label, value, min, max, step, unit, onChange }: SliderWithInputProps) {
+function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange }: SliderWithInputProps) {
   const clamp = (n: number) => Math.min(max, Math.max(min, n));
   const [draft, setDraft] = useState<string>(String(value));
 
@@ -194,7 +195,19 @@ function SliderWithInput({ label, value, min, max, step, unit, onChange }: Slide
 
   return (
     <div className="space-y-2">
-      <label className="text-fs-regular font-medium whitespace-nowrap block">{label}</label>
+      <div className="flex items-center gap-1.5">
+        <label className="text-fs-regular font-medium whitespace-nowrap">{label}</label>
+        {tooltip && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Info className="w-3.5 h-3.5 text-primary cursor-help shrink-0" />
+            </TooltipTrigger>
+            <TooltipContent side="top" className="max-w-xs text-fs-small">
+              {tooltip}
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
       <div className="flex items-center gap-2">
         <Input
           type="number"
