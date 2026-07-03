@@ -317,7 +317,7 @@ export default function SavingsCalculator() {
         <div className="bg-card border border-border p-6 space-y-6">
           <h2 className="text-h6 font-semibold flex items-center gap-2">
             <FileText className="w-5 h-5 text-primary" />
-            Twoje parametry
+            Wprowadź swoje parametry
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
