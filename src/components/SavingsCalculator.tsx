@@ -233,7 +233,7 @@ function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange
               setDraft(String(clamped));
             }
           }}
-          className="h-10 w-full text-left text-h6 font-semibold text-primary px-3"
+          className="h-16 w-full text-left text-h6 font-semibold text-primary px-4 py-3"
         />
         {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
       </div>
