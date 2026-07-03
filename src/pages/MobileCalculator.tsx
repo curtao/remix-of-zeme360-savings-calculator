@@ -195,23 +195,25 @@ function StepShell({
   );
 }
 
-interface ParamSliderProps {
+interface ParamInputProps {
   value: number;
   min: number;
   max: number;
   step: number;
   unit?: string;
+  tooltip: React.ReactNode;
   onChange: (v: number) => void;
 }
 
-function ParamSlider({ value, min, max, step, unit, onChange }: ParamSliderProps) {
+function ParamInput({ value, min, max, step, unit, tooltip, onChange }: ParamInputProps) {
   const [draft, setDraft] = useState(String(value));
   const clamp = (n: number) => Math.min(max, Math.max(min, n));
   return (
-    <div className="space-y-5 mt-2">
+    <div className="space-y-4 mt-2">
       <div className="flex items-baseline justify-center gap-2">
         <Input
           type="number"
+          inputMode="numeric"
           value={draft}
           min={min}
           max={max}
@@ -232,31 +234,14 @@ function ParamSlider({ value, min, max, step, unit, onChange }: ParamSliderProps
               setDraft(String(c));
             }
           }}
-          className="h-14 w-32 text-center text-3xl font-semibold text-primary px-2"
+          className="!text-5xl h-20 w-full text-center font-semibold text-primary px-3"
         />
         {unit && (
-          <span className="text-xl font-semibold text-primary">{unit}</span>
+          <span className="text-3xl font-semibold text-primary">{unit}</span>
         )}
       </div>
-      <Slider
-        value={[value]}
-        min={min}
-        max={max}
-        step={step}
-        onValueChange={(v) => {
-          onChange(v[0]);
-          setDraft(String(v[0]));
-        }}
-      />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>
-          {min.toLocaleString("pl-PL")}
-          {unit ? ` ${unit}` : ""}
-        </span>
-        <span>
-          {max.toLocaleString("pl-PL")}
-          {unit ? ` ${unit}` : ""}
-        </span>
+      <div className="bg-[#EDFFF6] border border-[#00DEAB] rounded-md px-3 py-2 text-fs-small text-muted-foreground">
+        {tooltip}
       </div>
     </div>
   );
