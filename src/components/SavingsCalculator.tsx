@@ -308,6 +308,9 @@ export default function SavingsCalculator() {
             <FileText className="w-5 h-5 text-primary" />
             Wprowadź swoje parametry
           </h2>
+          <p className="text-sm text-muted-foreground -mt-4 mb-1">
+            Podane niżej wartości są przykładowe. Aby obliczyć swoje oszczędności, podaj własne liczby.
+          </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="space-y-2">
