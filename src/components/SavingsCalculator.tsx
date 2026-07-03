@@ -202,7 +202,7 @@ function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange
             <TooltipTrigger asChild>
               <Info className="w-3.5 h-3.5 text-primary cursor-help shrink-0" />
             </TooltipTrigger>
-            <TooltipContent side="top" className="max-w-xs text-fs-small">
+        <TooltipContent side="top" className="max-w-xs bg-[#EDFFF6] text-muted-foreground rounded-md px-3 py-2 border-0 shadow-none text-fs-small">
               {tooltip}
             </TooltipContent>
           </Tooltip>
@@ -233,7 +233,7 @@ function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange
               setDraft(String(clamped));
             }
           }}
-          className="h-10 w-full text-left text-fs-regular font-semibold text-primary px-3"
+          className="h-10 w-full text-left text-h6 font-semibold text-primary px-3"
         />
         {unit && <span className="text-fs-small font-semibold text-primary">{unit}</span>}
       </div>
