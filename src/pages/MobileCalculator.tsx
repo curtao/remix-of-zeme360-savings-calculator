@@ -356,20 +356,24 @@ export default function MobileCalculator() {
         stepIndex={0}
         totalSteps={4}
         title="KPO miesięcznie"
-        description={`Na podstawie liczby KPO obliczymy też wpisy w KEO (ok. ${calc.keo.toLocaleString(
-          "pl-PL"
-        )} wpisów).`}
         icon={<FileText className="w-5 h-5 text-primary" />}
         onBack={back}
         onNext={next}
         canGoBack
       >
-        <ParamSlider
+        <ParamInput
           value={docs}
           min={1}
           max={20000}
           step={1}
           onChange={setDocs}
+          tooltip={
+            <>
+              Na podstawie liczby KPO kalkulator liczy oszczędność czasu na stworzeniu i zarządzaniu KPO oraz stworzeniu wpisów w KEO (w tym przypadku to ok.{" "}
+              <span className="font-semibold">{calc.keo.toLocaleString("pl-PL")}</span>{" "}
+              wpisów, ponieważ 1 KPO to 2 wpisy w KEO).
+            </>
+          }
         />
       </StepShell>
     );
@@ -382,13 +386,19 @@ export default function MobileCalculator() {
         stepIndex={1}
         totalSteps={4}
         title="Zlecenia DPR kwartalnie"
-        description="Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12)."
         icon={<CalendarDays className="w-5 h-5 text-primary" />}
         onBack={back}
         onNext={next}
         canGoBack
       >
-        <ParamSlider value={dpr} min={0} max={50} step={1} onChange={setDpr} />
+        <ParamInput
+          value={dpr}
+          min={0}
+          max={50}
+          step={1}
+          onChange={setDpr}
+          tooltip="Kalkulator pokaże uśrednione oszczędności miesięczne (×4 / 12)."
+        />
       </StepShell>
     );
   }
@@ -400,18 +410,18 @@ export default function MobileCalculator() {
         stepIndex={2}
         totalSteps={4}
         title="Raporty miesięcznie"
-        description="Liczba raportów, które tworzysz na podstawie danych odpadowych."
         icon={<BarChart3 className="w-5 h-5 text-primary" />}
         onBack={back}
         onNext={next}
         canGoBack
       >
-        <ParamSlider
+        <ParamInput
           value={reports}
           min={1}
           max={500}
           step={1}
           onChange={setReports}
+          tooltip="Liczba raportów, które tworzysz na podstawie danych odpadowych."
         />
         <div className="flex items-start gap-3 mt-8 p-3 border border-border bg-card">
           <Checkbox
@@ -438,20 +448,20 @@ export default function MobileCalculator() {
         stepIndex={3}
         totalSteps={4}
         title="Koszt godziny pracy"
-        description="Koszt godziny pracy Twojego pracownika."
         icon={<PiggyBank className="w-5 h-5 text-primary" />}
         onBack={back}
         onNext={next}
         canGoBack
         nextLabel="Zobacz oszczędności"
       >
-        <ParamSlider
+        <ParamInput
           value={rate}
           min={40}
           max={200}
           step={5}
           unit="zł"
           onChange={setRate}
+          tooltip="Koszt godziny pracy Twojego pracownika."
         />
       </StepShell>
     );
