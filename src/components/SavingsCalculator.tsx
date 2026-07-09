@@ -218,9 +218,10 @@ function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange
           onChange={(e) => {
             const raw = e.target.value;
             setDraft(raw);
+            if (raw === "") return;
             const n = Number(raw);
-            if (raw !== "" && !isNaN(n) && n >= min && n <= max) {
-              onChange(n);
+            if (!isNaN(n)) {
+              onChange(clamp(n));
             }
           }}
           onBlur={() => {
