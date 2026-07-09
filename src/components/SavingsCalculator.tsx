@@ -274,7 +274,8 @@ export default function SavingsCalculator() {
   const wrap = (setter: (n: number) => void) => (v: number) => { setter(v); handleInteraction(); };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-10">
+    <TooltipProvider>
+      <div className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
         <h2 className="text-h3 md:text-h2 font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
