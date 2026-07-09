@@ -222,11 +222,10 @@ function ParamInput({ value, min, max, step, unit, tooltip, onChange }: ParamInp
           max={max}
           step={step}
           onChange={(e) => {
-            const raw = e.target.value;
-            setDraft(raw);
-            if (raw === "") return;
-            const n = Number(raw);
-            if (!isNaN(n)) onChange(clamp(n));
+            setDraft(e.target.value);
+            const n = Number(e.target.value);
+            if (e.target.value !== "" && !isNaN(n) && n >= min && n <= max)
+              onChange(n);
           }}
           onBlur={() => {
             const n = Number(draft);

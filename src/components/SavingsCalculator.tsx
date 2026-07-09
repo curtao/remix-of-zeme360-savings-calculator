@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useCalculatorEmit } from "@/hooks/useCalculatorEmit";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { Clock, TrendingUp, PiggyBank, Zap, FileText, BarChart3, ShieldCheck, CalendarDays, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -218,10 +218,9 @@ function SliderWithInput({ label, value, min, max, step, unit, tooltip, onChange
           onChange={(e) => {
             const raw = e.target.value;
             setDraft(raw);
-            if (raw === "") return;
             const n = Number(raw);
-            if (!isNaN(n)) {
-              onChange(clamp(n));
+            if (raw !== "" && !isNaN(n) && n >= min && n <= max) {
+              onChange(n);
             }
           }}
           onBlur={() => {
@@ -275,8 +274,7 @@ export default function SavingsCalculator() {
   const wrap = (setter: (n: number) => void) => (v: number) => { setter(v); handleInteraction(); };
 
   return (
-    <TooltipProvider>
-      <div className="w-full max-w-6xl mx-auto px-4 py-10">
+    <div className="w-full max-w-6xl mx-auto px-4 py-10">
       <div className="text-center mb-10">
         <h2 className="text-h3 md:text-h2 font-semibold tracking-tight mb-3">
           Kalkulator oszczędności{" "}
@@ -517,7 +515,6 @@ export default function SavingsCalculator() {
         </div>
       </div>
     </div>
-    </TooltipProvider>
   );
 }
 
