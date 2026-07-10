@@ -146,7 +146,7 @@ function StepShell({
 }: StepShellProps) {
   const progress = ((stepIndex + 1) / totalSteps) * 100;
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-background">
+    <div className="flex flex-col bg-background">
       {showHeader && (
         <header className="px-5 pt-6 pb-4">
           <p className="text-fs-regular font-medium text-muted-foreground">
@@ -480,7 +480,7 @@ export default function MobileCalculator() {
     : 0;
 
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-background">
+    <div className="flex flex-col bg-background">
       <header className="px-5 pt-6 pb-4 flex items-center gap-3">
         <Button
           variant="ghost"
